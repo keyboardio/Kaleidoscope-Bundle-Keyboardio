@@ -1,0 +1,11 @@
+This repository should not, itself, contain any substantial source code.
+
+Most code included herein is included as a git submodule. Each submodule should have its own copyright and license information. 
+
+Any code included in this repository should bear a copyright and license statement.
+
+Specifically the variants/ directory contains C header files which map between the Arduino core and hardware implementations. Each variant/ carries its own copyright statement. As of this writing, all are licensed under the terms of v2 of the GNU General Public License.
+
+Makefiles included in this repository are licensed under the terms of the MIT License.
+
+The boards.txt and platform.txt configuration files are configuration files. We make no copyright claims about them.
