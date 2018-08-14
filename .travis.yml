@@ -1,0 +1,43 @@
+dist: trusty
+sudo: false
+os:
+- linux
+install:
+- mkdir -p hardware/
+- ln -s `pwd` hardware/keyboardio
+script:
+- make travis-test-all BOARD_HARDWARE_PATH=$(pwd)/hardware
+branches:
+  except:
+  - gh-pages
+env:
+  global:
+  - GH_REPO_NAME: Arduino-Boards
+  - DOXYFILE: "$TRAVIS_BUILD_DIR/build-tools/automation/etc/doxygen/doxygen.conf"
+  - GH_REPO_REF: github.com/keyboardio/Kaleidoscope-Bundle-Keyboardio.git
+  - secure: ntSlhMiirwGBGy1r0WtcWs+hhOszkx74/+A+Tud4FSeGlEj5wnsvBD0KrerzbLGZCi1JkEpxKbspra7J7/MivLyHGCb7Jzz/vRogHLSAy5hut1G0Odr9aphseQqJ9WG0VlTkuMGcO7I9iAlGT7zes7DkiJfzD3J4ZnOZknW+tmGE2UzHcBzYxOq7LirlbJYIiYfJHB9hL/R5gFg22R37/nF68iTjyQGyRaIg+pcbnZahQUu5B7kMa1ORNhMOcOxHRSNW59WGGzGx2WE9+ccfOZX63fPC0ZJRkKKgps//UY5zYF01HiNKv3m6O5nWbjQwkUDsAtLwLoJohv8dlsoQ9hgFqh8fUvu6rT1KqOEfK6rJtD5PFjazz6V93FhJxgGQVIJ4IcWoApzEyP2oR66ZbYOLw0P4H9BnMDwDtv531xuGIh1/tBx/FHdN3r3Fm+PxJVwCAageh44Q/4uwl3gmm2WQq/9/EejvAmUexS65rySyj3ETTo7Lrhml1iSLo6GpAalFYjokwkcY2PEluvk06ldswgu54h/n08r4rpOXAX9NVCcIIq9PimnkRAbQn/CPJPbpPeJveHZO75puPF8zaeI1hNRoVyV6tdXVE99WD96PjJC4F3Qd7o2Ehj+zvzSG7744hFZvOV12RXgHyhZWSZUPAFLZRDkHwjsyR9ZEWeQ=
+notifications:
+  irc:
+    channels:
+    - chat.freenode.net#keyboardio
+    use_notice: true
+    skip_join: true
+    template:
+    - "%{repository_name}/%{branch} %{commit} by %{author}: %{commit_subject} %{build_url}
+      %{message}"
+  email:
+    on_success: change
+    on_failure: change
+cache:
+  ccache: true
+addons:
+  apt:
+    packages:
+    - doxygen
+    - doxygen-doc
+    - doxygen-latex
+    - doxygen-gui
+    - graphviz
+after_success:
+- cd $TRAVIS_BUILD_DIR
+- sh ./build-tools/automation/doxygen-deploy.sh
