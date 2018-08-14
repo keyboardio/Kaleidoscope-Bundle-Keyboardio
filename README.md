@@ -1,3 +1,8 @@
+# WORK IN PROGRESS
+
+# THESE ARE NOT THE DROIDS YOU ARE LOOKING FOR
+
+
 # Arduino Core for the Keyboardio Model 01
 
 This repository contains a number of git submodules.
