@@ -1,0 +1,3 @@
+This file exists purely so that we can check in the support/x86/variants/virtual
+  directory to the Git repo.  (Git doesn't allow to check in empty folders.)
+We need this directory in order to satisfy the Arduino build system.
