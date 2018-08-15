@@ -175,3 +175,6 @@
 [submodule "avr/libraries/Kaleidoscope-USB-Quirks"]
 	path = avr/libraries/Kaleidoscope-USB-Quirks
 	url = https://github.com/keyboardio/Kaleidoscope-USB-Quirks
+[submodule "avr/libraries/Kaleidoscope-Hardware-Virtual"]
+	path = avr/libraries/Kaleidoscope-Hardware-Virtual
+	url = https://github.com/keyboardio/Kaleidoscope-Hardware-Virtual
