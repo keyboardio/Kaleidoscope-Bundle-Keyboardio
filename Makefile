@@ -23,7 +23,7 @@
 
 ifeq ($(BOARD_HARDWARE_PATH),)
 PLUGIN_TEST_SUPPORT_DIR =? ./build-tools
-KALEIDOSCOPE_BUILDER_DIR =? ./libraries/Kaleidoscope/bin/
+KALEIDOSCOPE_BUILDER_DIR =? ./avr/libraries/Kaleidoscope/bin/
 
 endif
 
