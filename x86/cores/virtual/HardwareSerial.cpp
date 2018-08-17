@@ -11,11 +11,28 @@ bool Serial1_available() __attribute__((weak));
 bool Serial2_available() __attribute__((weak));
 bool Serial3_available() __attribute__((weak));
 
+void serialEvent() {}
+void serialEvent1() {}
+void serialEvent2() {}
+void serialEvent3() {}
+bool Serial0_available() {
+  return true;
+}
+bool Serial1_available() {
+  return true;
+}
+bool Serial2_available() {
+  return true;
+}
+bool Serial3_available() {
+  return true;
+}
+
 void serialEventRun(void) {
-  if (Serial0_available && serialEvent && Serial0_available()) serialEvent();
-  if (Serial1_available && serialEvent && Serial1_available()) serialEvent1();
-  if (Serial2_available && serialEvent && Serial2_available()) serialEvent2();
-  if (Serial3_available && serialEvent && Serial3_available()) serialEvent3();
+  if (Serial0_available()) serialEvent();
+  if (Serial1_available()) serialEvent1();
+  if (Serial2_available()) serialEvent2();
+  if (Serial3_available()) serialEvent3();
 }
 
 unsigned HardwareSerial::serialNumber = 0;

@@ -1,4 +1,8 @@
 #include <stdbool.h>
+
+#undef min
+#undef max
+
 #include <string>
 
 // Returns TRUE if successful, FALSE if not
