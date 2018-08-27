@@ -43,6 +43,8 @@ checkout-submodules: git-pull
 
 maintainer-update-submodules:
 	git submodule update --recursive --remote --init
+	git submodule foreach git checkout master
+	git submodule foreach git pull origin master
 
 git-pull:
 	git pull
