@@ -58,3 +58,34 @@ ergodox.build.board=AVR_ERGODOX
 ergodox.build.core=arduino:arduino
 ergodox.build.variant=ergodox
 ergodox.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-EZ-ErgoDox.h"' '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0'
+
+##############################################################
+
+atreus.name=Atreus
+atreus.vid.0=0x1209
+atreus.pid.0=0xa1e5
+
+atreus.upload.maximum_data_size=2560
+
+atreus.menu.cpu.astar=A*
+atreus.menu.cpu.astar.upload.tool=avrdude
+atreus.menu.cpu.astar.upload.protocol=avr109
+atreus.menu.cpu.astar.upload.maximum_size=28672
+atreus.menu.cpu.astar.upload.speed=57600
+atreus.menu.cpu.astar.upload.disable_flushing=true
+
+atreus.menu.cpu.teensy=Teensy2
+atreus.menu.cpu.teensy.upload.tool=teensy_loader_cli
+atreus.menu.cpu.teensy.upload.protocol=halfkay
+atreus.menu.cpu.teensy.upload.maximum_size=32256
+
+atreus.build.mcu=atmega32u4
+atreus.build.f_cpu=16000000L
+atreus.build.vid=0x1209
+atreus.build.pid=0xa1e5
+atreus.build.usb_product="Atreus"
+atreus.build.usb_manufacturer="Technomancy"
+atreus.build.board=AVR_ATREUS
+atreus.build.core=arduino:arduino
+atreus.build.variant=atreus
+atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"'
