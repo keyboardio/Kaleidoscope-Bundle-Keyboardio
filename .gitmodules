@@ -175,3 +175,6 @@
 [submodule "avr/libraries/Kaleidoscope-Hardware-Technomancy-Atreus"]
 	path = avr/libraries/Kaleidoscope-Hardware-Technomancy-Atreus
 	url = https://github.com/keyboardio/Kaleidoscope-Hardware-Technomancy-Atreus.git
+[submodule "avr/libraries/Kaleidoscope-FocusSerial"]
+	path = avr/libraries/Kaleidoscope-FocusSerial
+	url = https://github.com/keyboardio/Kaleidoscope-FocusSerial.git
