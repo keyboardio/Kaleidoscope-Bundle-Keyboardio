@@ -31,9 +31,6 @@
 [submodule "avr/libraries/Kaleidoscope-GhostInTheFirmware"]
 	path = avr/libraries/Kaleidoscope-GhostInTheFirmware
 	url = https://github.com/keyboardio/Kaleidoscope-GhostInTheFirmware
-[submodule "avr/libraries/Kaleidoscope-MouseKeys"]
-	path = avr/libraries/Kaleidoscope-MouseKeys
-	url = https://github.com/keyboardio/Kaleidoscope-MouseKeys
 [submodule "avr/libraries/Kaleidoscope-TopsyTurvy"]
 	path = avr/libraries/Kaleidoscope-TopsyTurvy
 	url = https://github.com/keyboardio/Kaleidoscope-TopsyTurvy
@@ -46,27 +43,15 @@
 [submodule "avr/libraries/Kaleidoscope-HostOS"]
 	path = avr/libraries/Kaleidoscope-HostOS
 	url = https://github.com/keyboardio/Kaleidoscope-HostOS
-[submodule "avr/libraries/Kaleidoscope-MagicCombo"]
-	path = avr/libraries/Kaleidoscope-MagicCombo
-	url = https://github.com/keyboardio/Kaleidoscope-MagicCombo
-[submodule "avr/libraries/Kaleidoscope-LEDControl"]
-	path = avr/libraries/Kaleidoscope-LEDControl
-	url = https://github.com/keyboardio/Kaleidoscope-LEDControl
 [submodule "avr/libraries/Kaleidoscope-Heatmap"]
 	path = avr/libraries/Kaleidoscope-Heatmap
 	url = https://github.com/keyboardio/Kaleidoscope-Heatmap
 [submodule "avr/libraries/Kaleidoscope-LED-ActiveModColor"]
 	path = avr/libraries/Kaleidoscope-LED-ActiveModColor
 	url = https://github.com/keyboardio/Kaleidoscope-LED-ActiveModColor
-[submodule "avr/libraries/Kaleidoscope-Macros"]
-	path = avr/libraries/Kaleidoscope-Macros
-	url = https://github.com/keyboardio/Kaleidoscope-Macros
 [submodule "avr/libraries/Kaleidoscope-ShapeShifter"]
 	path = avr/libraries/Kaleidoscope-ShapeShifter
 	url = https://github.com/keyboardio/Kaleidoscope-ShapeShifter
-[submodule "avr/libraries/Kaleidoscope-LED-Stalker"]
-	path = avr/libraries/Kaleidoscope-LED-Stalker
-	url = https://github.com/keyboardio/Kaleidoscope-LED-Stalker
 [submodule "avr/libraries/Kaleidoscope-Ranges"]
 	path = avr/libraries/Kaleidoscope-Ranges
 	url = https://github.com/keyboardio/Kaleidoscope-Ranges
@@ -76,48 +61,21 @@
 [submodule "avr/libraries/Kaleidoscope-LEDEffects"]
 	path = avr/libraries/Kaleidoscope-LEDEffects
 	url = https://github.com/keyboardio/Kaleidoscope-LEDEffects
-[submodule "avr/libraries/Kaleidoscope-Hardware-Model01"]
-	path = avr/libraries/Kaleidoscope-Hardware-Model01
-	url = https://github.com/keyboardio/Kaleidoscope-Hardware-Model01
 [submodule "avr/libraries/Kaleidoscope-Cycle"]
 	path = avr/libraries/Kaleidoscope-Cycle
 	url = https://github.com/keyboardio/Kaleidoscope-Cycle
 [submodule "avr/libraries/Kaleidoscope-Syster"]
 	path = avr/libraries/Kaleidoscope-Syster
 	url = https://github.com/keyboardio/Kaleidoscope-Syster
-[submodule "avr/libraries/Kaleidoscope-LEDEffect-Chase"]
-	path = avr/libraries/Kaleidoscope-LEDEffect-Chase
-	url = https://github.com/keyboardio/Kaleidoscope-LEDEffect-Chase
-[submodule "avr/libraries/Kaleidoscope-LEDEffect-SolidColor"]
-	path = avr/libraries/Kaleidoscope-LEDEffect-SolidColor
-	url = https://github.com/keyboardio/Kaleidoscope-LEDEffect-SolidColor
-[submodule "avr/libraries/Kaleidoscope-LEDEffect-Breathe"]
-	path = avr/libraries/Kaleidoscope-LEDEffect-Breathe
-	url = https://github.com/keyboardio/Kaleidoscope-LEDEffect-Breathe
-[submodule "avr/libraries/Kaleidoscope-LEDEffect-Rainbow"]
-	path = avr/libraries/Kaleidoscope-LEDEffect-Rainbow
-	url = https://github.com/keyboardio/Kaleidoscope-LEDEffect-Rainbow
-[submodule "avr/libraries/Kaleidoscope-Model01-TestMode"]
-	path = avr/libraries/Kaleidoscope-Model01-TestMode
-	url = https://github.com/keyboardio/Kaleidoscope-Model01-TestMode
 [submodule "avr/libraries/Kaleidoscope"]
 	path = avr/libraries/Kaleidoscope
 	url = https://github.com/keyboardio/Kaleidoscope
 [submodule "avr/libraries/AtmegaScanner"]
 	path = avr/libraries/AtmegaScanner
 	url = https://github.com/keyboardio/AtmegaScanner
-[submodule "avr/libraries/Kaleidoscope-LED-AlphaSquare"]
-	path = avr/libraries/Kaleidoscope-LED-AlphaSquare
-	url = https://github.com/keyboardio/Kaleidoscope-LED-AlphaSquare
 [submodule "avr/libraries/Kaleidoscope-Focus"]
 	path = avr/libraries/Kaleidoscope-Focus
 	url = https://github.com/keyboardio/Kaleidoscope-Focus
-[submodule "avr/libraries/Kaleidoscope-EEPROM-Settings"]
-	path = avr/libraries/Kaleidoscope-EEPROM-Settings
-	url = https://github.com/keyboardio/Kaleidoscope-EEPROM-Settings
-[submodule "avr/libraries/Kaleidoscope-EEPROM-Keymap"]
-	path = avr/libraries/Kaleidoscope-EEPROM-Keymap
-	url = https://github.com/keyboardio/Kaleidoscope-EEPROM-Keymap
 [submodule "avr/libraries/Kaleidoscope-EEPROM-Keymap-Programmer"]
 	path = avr/libraries/Kaleidoscope-EEPROM-Keymap-Programmer
 	url = https://github.com/keyboardio/Kaleidoscope-EEPROM-Keymap-Programmer
@@ -136,9 +94,6 @@
 [submodule "avr/libraries/Kaleidoscope-Steno"]
 	path = avr/libraries/Kaleidoscope-Steno
 	url = https://github.com/keyboardio/Kaleidoscope-Steno.git
-[submodule "avr/libraries/Kaleidoscope-LEDEffect-BootGreeting"]
-	path = avr/libraries/Kaleidoscope-LEDEffect-BootGreeting
-	url = https://github.com/keyboardio/Kaleidoscope-LEDEffect-BootGreeting
 [submodule "avr/libraries/Kaleidoscope-CycleTimeReport"]
 	path = avr/libraries/Kaleidoscope-CycleTimeReport
 	url = https://github.com/keyboardio/Kaleidoscope-CycleTimeReport
@@ -148,12 +103,6 @@
 [submodule "avr/libraries/Kaleidoscope-Hardware"]
 	path = avr/libraries/Kaleidoscope-Hardware
 	url = https://github.com/Keyboardio/Kaleidoscope-Hardware
-[submodule "avr/libraries/Kaleidoscope-NumPad"]
-	path = avr/libraries/Kaleidoscope-NumPad
-	url = https://github.com/Keyboardio/Kaleidoscope-NumPad
-[submodule "avr/libraries/Kaleidoscope-HostPowerManagement"]
-	path = avr/libraries/Kaleidoscope-HostPowerManagement
-	url = https://github.com/keyboardio/Kaleidoscope-HostPowerManagement
 [submodule "avr/libraries/Kaleidoscope-HIDAdaptor-KeyboardioHID"]
 	path = avr/libraries/Kaleidoscope-HIDAdaptor-KeyboardioHID
 	url = https://github.com/keyboardio/Kaleidoscope-HIDAdaptor-KeyboardioHID
@@ -166,15 +115,9 @@
 [submodule "avr/libraries/Kaleidoscope-Hardware-EZ-ErgoDox"]
 	path = avr/libraries/Kaleidoscope-Hardware-EZ-ErgoDox
 	url = https://github.com/keyboardio/Kaleidoscope-Hardware-EZ-ErgoDox
-[submodule "avr/libraries/Kaleidoscope-USB-Quirks"]
-	path = avr/libraries/Kaleidoscope-USB-Quirks
-	url = https://github.com/keyboardio/Kaleidoscope-USB-Quirks
 [submodule "avr/libraries/Kaleidoscope-Hardware-Virtual"]
 	path = avr/libraries/Kaleidoscope-Hardware-Virtual
 	url = https://github.com/keyboardio/Kaleidoscope-Hardware-Virtual
 [submodule "avr/libraries/Kaleidoscope-Hardware-Technomancy-Atreus"]
 	path = avr/libraries/Kaleidoscope-Hardware-Technomancy-Atreus
 	url = https://github.com/keyboardio/Kaleidoscope-Hardware-Technomancy-Atreus.git
-[submodule "avr/libraries/Kaleidoscope-FocusSerial"]
-	path = avr/libraries/Kaleidoscope-FocusSerial
-	url = https://github.com/keyboardio/Kaleidoscope-FocusSerial.git
