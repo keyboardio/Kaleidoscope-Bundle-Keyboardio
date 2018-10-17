@@ -13,9 +13,6 @@
 [submodule "avr/libraries/KeyboardioHID"]
 	path = avr/libraries/KeyboardioHID
 	url = https://github.com/keyboardio/KeyboardioHID
-[submodule "avr/libraries/FingerprintUSBHost"]
-	path = avr/libraries/FingerprintUSBHost
-	url = https://github.com/keyboardio/FingerprintUSBHost
 [submodule "avr/libraries/HID"]
 	path = avr/libraries/HID
 	url = https://github.com/keyboardio/Arduino-HID
@@ -70,12 +67,6 @@
 [submodule "avr/libraries/Kaleidoscope"]
 	path = avr/libraries/Kaleidoscope
 	url = https://github.com/keyboardio/Kaleidoscope
-[submodule "avr/libraries/AtmegaScanner"]
-	path = avr/libraries/AtmegaScanner
-	url = https://github.com/keyboardio/AtmegaScanner
-[submodule "avr/libraries/Kaleidoscope-Focus"]
-	path = avr/libraries/Kaleidoscope-Focus
-	url = https://github.com/keyboardio/Kaleidoscope-Focus
 [submodule "avr/libraries/Kaleidoscope-EEPROM-Keymap-Programmer"]
 	path = avr/libraries/Kaleidoscope-EEPROM-Keymap-Programmer
 	url = https://github.com/keyboardio/Kaleidoscope-EEPROM-Keymap-Programmer
