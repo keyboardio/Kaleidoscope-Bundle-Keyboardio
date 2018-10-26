@@ -232,6 +232,7 @@ size_t Serial_::write(const uint8_t *buffer, size_t size)
 	if (_usbLineInfo.lineState > 0)	{
 		int r = USB_Send(CDC_TX,buffer,size);
 		if (r > 0) {
+			delay(5);
 			return r;
 		} else {
 			setWriteError();
