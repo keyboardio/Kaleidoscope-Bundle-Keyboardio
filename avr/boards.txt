@@ -37,6 +37,44 @@ model01.build.core=arduino:arduino
 model01.build.variant=model01
 model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Model01.h"'
 
+
+
+imago.name=Keyboardio Imago
+imago.vid.0=0x2341
+imago.pid.0=0x8037
+
+imago.upload.tool=avrdude
+imago.upload.protocol=avr109
+imago.upload.maximum_size=28672
+imago.upload.maximum_data_size=2560
+imago.upload.speed=57600
+imago.upload.disable_flushing=true
+imago.upload.use_1200bps_touch=true
+imago.upload.wait_for_upload_port=true
+
+imago.bootloader.tool=avrdude
+imago.bootloader.low_fuses=0xff
+imago.bootloader.high_fuses=0xd8
+imago.bootloader.extended_fuses=0xcb
+imago.bootloader.file=caterina/Caterina.hex
+imago.bootloader.unlock_bits=0x3F
+imago.bootloader.lock_bits=0x2F
+imago.bootloader.pid=0x2300
+
+imago.build.mcu=atmega32u4
+imago.build.f_cpu=16000000L
+imago.build.vid=0x1209
+imago.build.pid=0x2301
+imago.build.usb_product="Imago"
+imago.build.usb_manufacturer="Keyboardio"
+imago.build.board=AVR_IMAGO
+imago.build.core=arduino:arduino
+imago.build.variant=keyboardio-imago
+imago.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Imago.h"'
+
+
+
+
 ##############################################################
 
 ergodox.name=ErgoDox
