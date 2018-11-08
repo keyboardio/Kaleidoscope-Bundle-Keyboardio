@@ -1,7 +1,7 @@
 # See: http://code.google.com/p/arduino/wiki/Platforms
 
 menu.cpu=Processor
-
+menu.bootloader=Bootloader
 ##############################################################
 
 model01.name=Keyboardio Model 01
@@ -73,6 +73,54 @@ imago.build.variant=keyboardio-imago
 imago.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Imago.h"'
 
 
+
+####################
+planck.name=OLKB Planck
+planck.vid.0=0x1209
+planck.pid.0=0x2303
+
+planck.menu.bootloader.dfu=DFU
+planck.menu.bootloader.dfu.upload.tool=dfu-programmer
+planck.menu.bootloader.dfu.upload.protocol=dfu
+planck.menu.bootloader.dfu.upload.maximum_size=28672
+planck.menu.bootloader.dfu.upload.maximum_data_size=2560
+planck.menu.bootloader.dfu.upload.speed=57600
+planck.menu.bootloader.dfu.upload.disable_flushing=true
+planck.menu.bootloader.dfu.upload.use_1200bps_touch=false
+planck.menu.bootloader.dfu.upload.wait_for_upload_port=true
+
+
+
+planck.menu.bootloader.caterina=Caterina
+planck.menu.bootloader.caterina.upload.tool=avrdude
+planck.menu.bootloader.caterina.upload.protocol=avr109
+planck.menu.bootloader.caterina.upload.maximum_size=28672
+planck.menu.bootloader.caterina.upload.maximum_data_size=2560
+planck.menu.bootloader.caterina.upload.speed=57600
+planck.menu.bootloader.caterina.upload.disable_flushing=true
+planck.menu.bootloader.caterina.upload.use_1200bps_touch=true
+planck.menu.bootloader.caterina.upload.wait_for_upload_port=true
+
+
+planck.bootloader.tool=avrdude
+planck.bootloader.low_fuses=0xff
+planck.bootloader.high_fuses=0xd8
+planck.bootloader.extended_fuses=0xcb
+planck.bootloader.file=caterina/Caterina.hex
+planck.bootloader.unlock_bits=0x3F
+planck.bootloader.lock_bits=0x2F
+planck.bootloader.pid=0x2302
+
+planck.build.mcu=atmega32u4
+planck.build.f_cpu=16000000L
+planck.build.vid=0x1209
+planck.build.pid=0x2303
+planck.build.usb_product="Planck"
+planck.build.usb_manufacturer="OLKB"
+planck.build.board=AVR_PLANCK
+planck.build.core=arduino:arduino
+planck.build.variant=olkb-planck
+planck.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-OLKB-Planck.h"'
 
 
 ##############################################################

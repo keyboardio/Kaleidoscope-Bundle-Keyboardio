@@ -121,6 +121,16 @@ tools.teensy_loader_cli.upload.params.quiet=
 tools.teensy_loader_cli.upload.noverify=
 tools.teensy_loader_cli.upload.pattern="{cmd.path}" {upload.verbose} --mcu=atmega32u4 -w -v "{build.path}/{build.project_name}.hex"
 
+
+tools.dfu-programmer.cmd.path=dfu-programmer
+tools.dfu-programmer.upload.params.verbose=-v
+tools.dfu-programmer.upload.params.quiet=
+tools.dfu-programmer.upload.noverify=
+tools.dfu-programmer.upload.pattern="{cmd.path}" atmega32u4 flash --force "{build.path}/{build.project_name}.hex"
+
+
+
+
 # USB Default Flags
 # Default blank usb manufacturer will be filled in at compile time
 # - from numeric vendor ID, set to Unknown otherwise
