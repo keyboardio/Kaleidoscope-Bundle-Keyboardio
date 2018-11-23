@@ -2,6 +2,8 @@
 
 menu.cpu=Processor
 menu.bootloader=Bootloader
+menu.pinout=Pinout
+
 ##############################################################
 
 model01.name=Keyboardio Model 01
@@ -124,6 +126,15 @@ atreus.menu.cpu.teensy.upload.tool=teensy_loader_cli
 atreus.menu.cpu.teensy.upload.protocol=halfkay
 atreus.menu.cpu.teensy.upload.maximum_size=32256
 
+atreus.menu.pinout.post2016=Post-2016 PCB
+atreus.menu.pinout.post2016.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR=1
+
+atreus.menu.pinout.pre2016=Pre-2016 PCB
+atreus.menu.pinout.pre2016.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR_DOWN=1
+
+atreus.menu.pinout.legacy_teensy2=Legacy Teensy2
+atreus.menu.pinout.legacy_teensy2.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_LEGACY_TEENSY2=1
+
 atreus.build.mcu=atmega32u4
 atreus.build.f_cpu=16000000L
 atreus.build.vid=0x1209
@@ -133,4 +144,3 @@ atreus.build.usb_manufacturer="Technomancy"
 atreus.build.board=AVR_ATREUS
 atreus.build.core=arduino:arduino
 atreus.build.variant=atreus
-atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"'
