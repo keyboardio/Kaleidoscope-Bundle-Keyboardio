@@ -144,3 +144,27 @@ atreus.build.usb_manufacturer="Technomancy"
 atreus.build.board=AVR_ATREUS
 atreus.build.core=arduino:arduino
 atreus.build.variant=atreus
+
+##############################################################
+
+splitography.name=Splitography
+splitography.vid.0=0xfeed
+splitography.pid.0=0x6060
+
+splitography.upload.tool=dfu-programmer
+splitography.upload.protocol=dfu
+splitography.upload.maximum_size=28672
+splitography.upload.maximum_data_size=2560
+splitography.upload.speed=57600
+splitography.upload.use_1200bps_touch=false
+
+splitography.build.mcu=atmega32u4
+splitography.build.f_cpu=16000000L
+splitography.build.vid=0xfeed
+splitography.build.pid=0x6060
+splitography.build.usb_product="Splitography"
+splitography.build.usb_manufacturer="SOFT/HRUF"
+splitography.build.board=AVR_SPLITOGRAPHY
+splitography.build.core=arduino:arduino
+splitography.build.variant=softhruf-splitography
+splitography.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-SOFTHRUF-Splitography.h"'
