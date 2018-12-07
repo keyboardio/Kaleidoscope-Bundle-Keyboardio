@@ -125,7 +125,7 @@ tools.dfu-programmer.cmd.path=dfu-programmer
 tools.dfu-programmer.upload.params.verbose=-v
 tools.dfu-programmer.upload.params.quiet=
 tools.dfu-programmer.upload.noverify=
-tools.dfu-programmer.upload.pattern="{cmd.path}" atmega32u4 flash --force "{build.path}/{build.project_name}.hex"
+tools.dfu-programmer.upload.pattern=/bin/sh -c '"{cmd.path}" atmega32u4 erase && "{cmd.path}" atmega32u4 flash "{build.path}/{build.project_name}.hex" && "{cmd.path}" atmega32u4 start'
 
 # USB Default Flags
 # Default blank usb manufacturer will be filled in at compile time
