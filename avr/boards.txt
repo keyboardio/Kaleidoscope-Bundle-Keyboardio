@@ -114,6 +114,9 @@ atreus.pid.0=0xa1e5
 
 atreus.upload.maximum_data_size=2560
 
+## defaults
+atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR=1
+
 atreus.menu.cpu.astar=A*
 atreus.menu.cpu.astar.upload.tool=avrdude
 atreus.menu.cpu.astar.upload.protocol=avr109
