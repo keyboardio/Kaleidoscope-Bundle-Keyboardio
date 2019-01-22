@@ -171,3 +171,31 @@ splitography.build.board=AVR_SPLITOGRAPHY
 splitography.build.core=arduino:arduino
 splitography.build.variant=softhruf-splitography
 splitography.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-SOFTHRUF-Splitography.h"'
+
+##############################################################
+
+kbd4x.name=KBDFans KBD4x
+kbd4x.vid.0=0xfeed
+kbd4x.pid.0=0x000
+
+kbd4x.upload.tool=dfu-programmer
+kbd4x.upload.protocol=dfu
+kbd4x.upload.maximum_size=28672
+kbd4x.upload.maximum_data_size=2560
+kbd4x.upload.speed=57600
+kbd4x.upload.disable_flushing=true
+kbd4x.upload.use_1200bps_touch=false
+kbd4x.upload.wait_for_upload_port=true
+
+kbd4x.build.mcu=atmega32u4
+kbd4x.build.f_cpu=16000000L
+kbd4x.build.vid=0xfeed
+kbd4x.build.pid=0x000
+kbd4x.build.usb_product="KBDFans"
+kbd4x.build.usb_manufacturer="KBD4x"
+kbd4x.build.board=AVR_KBD4X
+kbd4x.build.core=arduino:arduino
+kbd4x.build.variant=kbdfans-kbd4x
+kbd4x.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-KBDFans-KBD4x.h"'
+
+##############################################################
