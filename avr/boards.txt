@@ -42,7 +42,7 @@ model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidos
 
 
 
-keyboardio_imago.name=Keyboardio Model 01
+keyboardio_imago.name=Keyboardio Imago
 keyboardio_imago.vid.0=0x1209
 keyboardio_imago.pid.0=0x2301
 
@@ -62,7 +62,9 @@ keyboardio_imago.bootloader.extended_fuses=0xcb
 keyboardio_imago.bootloader.file=caterina/Caterina.hex
 keyboardio_imago.bootloader.unlock_bits=0x3F
 keyboardio_imago.bootloader.lock_bits=0x2F
-keyboardio_imago.bootloader.pid=0x2300
+keyboardio_imago.bootloader.pid=0x0036
+keyboardio_imago.bootloader.vid=0x2341
+
 
 keyboardio_imago.build.mcu=atmega32u4
 keyboardio_imago.build.f_cpu=16000000L
