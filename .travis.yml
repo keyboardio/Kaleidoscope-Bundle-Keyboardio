@@ -6,7 +6,7 @@ install:
 - mkdir -p hardware/
 - ln -s `pwd` hardware/keyboardio
 script:
-- make travis-test-all KALEIDOSCOPE_TEMP_PATH=$(pwd)/.kaleidoscope-build-cache BOARD_HARDWARE_PATH=$(pwd)/hardware
+- make travis-test-all BOARD_HARDWARE_PATH=$(pwd)/hardware
 branches:
   except:
   - gh-pages
@@ -23,7 +23,6 @@ notifications:
 cache: 
   ccache: true
   directories:
-    - .kaleidoscope-build-cache
     - .ccache
 addons:
   apt:
