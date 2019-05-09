@@ -153,6 +153,37 @@ ergodox.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidos
 
 ##############################################################
 
+atreus2.name=Atreus 2 Prototype
+atreus2.vid.0=0x1209
+atreus2.pid.0=0xa1e5
+
+atreus2.upload.maximum_data_size=2560
+
+## defaults
+atreus2.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus2.h"'
+atreus2.build.mcu=atmega32u4
+atreus2.build.f_cpu=16000000L
+atreus2.build.vid=0x1209
+atreus2.build.pid=0xa1e5
+atreus2.build.usb_product="Atreus2"
+atreus2.build.usb_manufacturer="Technomancy"
+atreus2.build.board=AVR_ATREUS2
+atreus2.build.core=arduino:arduino
+atreus2.build.variant=atreus2
+
+
+atreus2.upload.tool=avrdude
+atreus2.upload.protocol=avr109
+atreus2.upload.maximum_size=28672
+atreus2.upload.maximum_data_size=2560
+atreus2.upload.speed=57600
+atreus2.upload.disable_flushing=true
+atreus2.upload.use_1200bps_touch=true
+atreus2.upload.wait_for_upload_port=true
+
+
+
+
 atreus.name=Atreus
 atreus.vid.0=0x1209
 atreus.pid.0=0xa1e5
