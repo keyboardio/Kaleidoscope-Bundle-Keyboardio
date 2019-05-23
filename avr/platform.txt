@@ -22,6 +22,7 @@ compiler.path={runtime.tools.avr-gcc.path}/bin/
 compiler.c.cmd=avr-gcc
 compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD
 compiler.c.elf.flags={compiler.warning_flags} -Os -Wl,--gc-sections
+compiler.c.elf.flags_join_archives=rcT
 compiler.c.elf.cmd=avr-gcc
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=avr-g++
@@ -64,8 +65,21 @@ recipe.S.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.S.flags} -mmcu={b
 archive_file_path={build.path}/{archive_file}
 recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{archive_file_path}" "{object_file}"
 
-## Combine gc-sections, archives, and objects
-recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -mmcu={build.mcu} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" {object_files} "{build.path}/{archive_file}" "-L{build.path}" -lm
+################################################################################
+## PLEASE NOTE: The way we link our elf binary significantly differs from the 
+##              way that Arduino handles things by default. 
+##              The original linker command has been split up into two 
+##              steps (recipe.c.combine.pattern and recipe.hooks.linking.postlink.1.pattern).
+##              This is necessary to prevent link errors reporting unresolved symbols
+##              due to order dependencies of libraries and objects appearing
+##              in the linker command line.
+##              
+## CHANGED WRT DEFAULT: Generate a large .a archive to prevent link order issues with garbage collection
+recipe.c.combine.pattern="{compiler.path}/{compiler.ar.cmd}" {compiler.c.elf.flags_join_archives} "{build.path}/{build.project_name}_joined.a" {object_files} "{build.path}/{archive_file}"
+##
+## NEWLY INTRODUCED: Link with garbage collection
+recipe.hooks.linking.postlink.1.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -mmcu={build.mcu} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}_joined.a" "-L{build.path}" -lm
+################################################################################
 
 ## Create output files (.eep and .hex)
 recipe.objcopy.eep.pattern="{compiler.path}{compiler.objcopy.cmd}" {compiler.objcopy.eep.flags} {compiler.objcopy.eep.extra_flags} "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.eep"
