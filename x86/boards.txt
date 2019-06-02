@@ -1,7 +1,87 @@
-virtual.name="Kaleidoscope Virtual Keyboard"
-virtual.build.usb_product="Kaleidoscope Virtual Keyboard"
-virtual.build.usb_manufacturer="Kaleidoscope"
-virtual.build.board=VIRTUAL
-virtual.build.core=virtual
-virtual.build.variant=virtual
-virtual.build.extra_flags=-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Virtual.h"
+# See: http://code.google.com/p/arduino/wiki/Platforms
+
+#menu.cpu=Processor
+#menu.bootloader=Bootloader
+#menu.pinout=Pinout
+
+##############################################################
+
+model01.name=Keyboardio Model 01
+model01.build.usb_product="Model 01"
+model01.build.usb_manufacturer="Keyboardio"
+model01.build.board=AVR_MODEL01
+model01.build.core=virtual
+model01.build.variant=model01
+model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_SPEC_H="kaleidoscope/hardware/keyboardio/Model01_Spec.h"' '-DKALEIDOSCOPE_MCU_H="mcu/atmega32u4.h"'
+
+keyboardio_imago.name=Keyboardio Imago
+keyboardio_imago.build.usb_product="Imago"
+keyboardio_imago.build.usb_manufacturer="Keyboardio"
+keyboardio_imago.build.board=AVR_KEYBOARDIO_IMAGO
+keyboardio_imago.build.core=arduino:arduino
+keyboardio_imago.build.variant=keyboardio-imago
+keyboardio_imago.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_SPEC_H="Kaleidoscope-Hardware-Keyboardio-Imago.h"' 
+
+####################
+planck.name=OLKB Planck
+planck.build.usb_product="Planck"
+planck.build.usb_manufacturer="OLKB"
+planck.build.board=AVR_PLANCK
+planck.build.core=arduino:arduino
+planck.build.variant=olkb-planck
+planck.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_SPEC_H="Kaleidoscope-Hardware-OLKB-Planck.h"'
+
+##############################################################
+
+ergodox.name=ErgoDox
+ergodox.build.usb_product="ErgoDox EZ"
+ergodox.build.usb_manufacturer="ErgoDox EZ"
+ergodox.build.board=AVR_ERGODOX
+ergodox.build.core=arduino:arduino
+ergodox.build.variant=ergodox
+ergodox.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_SPEC_H="Kaleidoscope-Hardware-EZ-ErgoDox.h"' '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0'
+
+##############################################################
+
+atreus2.name=Atreus 2 Prototype
+
+## defaults
+atreus2.build.usb_product="Atreus2"
+atreus2.build.usb_manufacturer="Technomancy"
+atreus2.build.board=AVR_ATREUS2
+atreus2.build.core=arduino:arduino
+atreus2.build.variant=atreus2
+atreus2.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_SPEC_H="Kaleidoscope-Hardware-Technomancy-Atreus2.h"'
+
+atreus.name=Atreus
+
+## defaults
+atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_SPEC_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR=1
+
+atreus.build.usb_product="Atreus"
+atreus.build.usb_manufacturer="Technomancy"
+atreus.build.board=AVR_ATREUS
+atreus.build.core=arduino:arduino
+atreus.build.variant=atreus
+
+##############################################################
+
+splitography.name=Splitography
+splitography.build.usb_product="Splitography"
+splitography.build.usb_manufacturer="SOFT/HRUF"
+splitography.build.board=AVR_SPLITOGRAPHY
+splitography.build.core=arduino:arduino
+splitography.build.variant=softhruf-splitography
+splitography.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_SPEC_H="Kaleidoscope-Hardware-SOFTHRUF-Splitography.h"'
+
+##############################################################
+
+kbd4x.name=KBDFans KBD4x
+kbd4x.build.usb_product="KBDFans"
+kbd4x.build.usb_manufacturer="KBD4x"
+kbd4x.build.board=AVR_KBD4X
+kbd4x.build.core=arduino:arduino
+kbd4x.build.variant=kbdfans-kbd4x
+kbd4x.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_SPEC_H="Kaleidoscope-Hardware-KBDFans-KBD4x.h"'
+
+##############################################################

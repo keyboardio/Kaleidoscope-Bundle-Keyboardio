@@ -18,10 +18,11 @@ compiler.path=
 compiler.c.cmd=gcc
 compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD
 compiler.c.elf.flags={compiler.warning_flags} -Os -Wl,--gc-sections
+compiler.c.elf.flags_join_archives=rcT
 compiler.c.elf.cmd=g++
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=g++
-compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD
+compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD  -DARDUINO_VIRTUAL=1 -DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Virtual.h"
 compiler.ar.cmd=ar
 compiler.ar.flags=rcs
 compiler.objcopy.cmd=objcopy
@@ -60,8 +61,29 @@ recipe.S.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.S.flags} -DARDUIN
 archive_file_path={build.path}/{archive_file}
 recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{archive_file_path}" "{object_file}"
 
-## Combine gc-sections, archives, and objects
-recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" {object_files} "{build.path}/{archive_file}" "-L{build.path}" -lm
+################################################################################
+## PLEASE NOTE: The way we link our elf binary significantly differs from the 
+##              way that Arduino handles things by default. 
+##              The original linker command has been split up into three 
+##              steps (recipe.c.combine.pattern, recipe.hooks.linking.postlink.1.pattern
+##              and recipe.hooks.linking.postlink.2.pattern).
+##              This is necessary to prevent link errors reporting unresolved symbols
+##              due to order dependencies of libraries and objects appearing
+##              in the linker command line.
+##              
+## CHANGED WRT DEFAULT: Generate a large .a archive to prevent link order issues with garbage collection
+recipe.c.combine.pattern="{compiler.path}/{compiler.ar.cmd}" {compiler.c.elf.flags_join_archives} "{build.path}/{build.project_name}_joined.a" {object_files} "{build.path}/{archive_file}"
+##
+## NEWLY INTRODUCED: Link with global garbage collection (considering all
+##                   objects and libraries together).
+recipe.hooks.linking.postlink.1.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}_joined.a" "-L{build.path}" -lm
+##
+## NEWLY INTRODUCED: Removing the joined library is required to avoid malformed archives that
+##                   would otherwise result when updating a pre-existing
+##                   joined archive file during a subsequent firmware build.
+##
+recipe.hooks.linking.postlink.2.pattern={tools.rm.cmd} "{build.path}/{build.project_name}_joined.a"
+################################################################################
 
 ## Create output files (.eep and .hex)
 recipe.objcopy.eep.pattern="{compiler.path}{compiler.objcopy.cmd}" {compiler.objcopy.eep.flags} {compiler.objcopy.eep.extra_flags} "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.eep"
@@ -110,6 +132,9 @@ tools.avrdude.bootloader.params.quiet=-q -q
 tools.avrdude.bootloader.pattern=
 
 tools.avrdude_remote.upload.pattern=
+
+tools.rm.cmd=rm -f
+tools.rm.cmd.windows=powershell.exe Remove-Item -LiteralPath
 
 # USB Default Flags
 # Default blank usb manufacturer will be filled in at compile time

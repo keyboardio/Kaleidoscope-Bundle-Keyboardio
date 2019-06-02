@@ -269,9 +269,6 @@ long map(long, long, long, long, long);
 // We just discard the PROGMEM qualifier
 #define PROGMEM
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 #ifndef PGM_P
 #define PGM_P const char*
@@ -283,12 +280,25 @@ extern "C" {
 // We don't do anything special with PSTR
 #define PSTR(s) ((const char*)(s))
 
+#ifdef __cplusplus
 // Not sure if these are acceptable substitute definitions in our context or not
+inline uint8_t pgm_read_byte_near(const uint8_t *addr) { return *addr; }
+inline int8_t pgm_read_byte_near(const int8_t *addr) { return *addr; }
+inline char pgm_read_byte_near(const char *addr) { return *addr; }
+inline uint16_t pgm_read_word_near(const uint16_t *addr) { return *addr; }
+inline int16_t pgm_read_word_near(const int16_t *addr) { return *addr; }
+inline uint32_t pgm_read_dword_near(const uint32_t *addr) { return *addr; }
+inline int32_t pgm_read_dword_near(const int32_t *addr) { return *addr; }
+inline float pgm_read_float_near(const float *addr) { return *addr; }
+inline const void *pgm_read_ptr_near(const void **addr) { return *addr; }
+#else
 #define pgm_read_byte_near(addr) (*(const byte*)(addr))
 #define pgm_read_word_near(addr) (*(const word*)(addr))
 #define pgm_read_dword_near(addr) (*(const dword*)(addr))
 #define pgm_read_float_near(addr) (*(const float*)(addr))
 #define pgm_read_ptr_near(addr) (*(const void**)(addr))
+#endif
+
 #define pgm_read_byte_far(addr) pgm_read_byte_near(addr)
 #define pgm_read_word_far(addr) pgm_read_word_near(addr)
 #define pgm_read_dword_far(addr) pgm_read_dword_near(addr)
@@ -300,6 +310,10 @@ extern "C" {
 #define pgm_read_float(addr) pgm_read_float_near(addr)
 #define pgm_read_ptr(addr) pgm_read_ptr_near(addr)
 #define pgm_get_far_address(var) (&(var))
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 // _P or _PF string functions just call their standard library equivalents
 #include <string.h>
