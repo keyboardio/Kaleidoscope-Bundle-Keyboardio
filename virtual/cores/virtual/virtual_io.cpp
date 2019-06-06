@@ -8,7 +8,8 @@
 #include <sys/stat.h>  // mkdir()
 #include <errno.h>
 
-static bool interactive;
+static bool interactive = false;
+static bool test_function = false;
 static std::istream* input = NULL;
 static std::ostream* usbstream = NULL;
 static std::ostream* ledstream = NULL;
@@ -16,6 +17,10 @@ static unsigned cycle = 0;
 
 bool isInteractive(void) {
   return interactive;
+}
+
+bool testFunctionExecutionRequested() {
+  return test_function;
 }
 
 unsigned currentCycle(void) {
@@ -58,6 +63,8 @@ bool initVirtualInput(int argc, char* argv[]) {
   if (strcmp(argv[1], "-i") == 0) {
     interactive = true;
     input = &std::cin;
+  } else if(strcmp(argv[1], "-t") == 0) {
+    test_function = true;
   } else {
     interactive = false;
     input = new std::ifstream(argv[1]);
@@ -95,6 +102,7 @@ void printHelp(void) {
   std::cout << "This program expects a single argument, which is either:" << std::endl;
   std::cout << "  1. An input file/script, with format given below, or" << std::endl;
   std::cout << "  2. \"-i\", to run interactively, where you can interactively enter commands and see results." << std::endl;
+  std::cout << "  3. \"-t\", to run a test function that is specified in the sketch file." << std::endl;
   std::cout << "\nIn either case, for each scan cycle you will specify zero or more input 'commands', that is," << std::endl;
   std::cout << "  actions to take on the keys of the virtual keyboard.  Each line of the input file, or each" << std::endl;
   std::cout << "  prompt (in interactive mode), represents one scan cycle; a blank line or empty prompt means" << std::endl;

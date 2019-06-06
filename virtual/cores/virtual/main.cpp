@@ -29,6 +29,12 @@ void initVariant() { }
 void setupUSB() __attribute__((weak));
 void setupUSB() { }
 
+// This function can be overridden in other libraries
+// e.g. to run a testing framework.
+//
+__attribute__((weak))
+extern void executeTestFunction();
+
 void init(void) {
   // Arduino core does some device-related setup here.
   // We don't need to do anything.
@@ -36,6 +42,13 @@ void init(void) {
 
 int main(int argc, char* argv[]) {
   if (!initVirtualInput(argc, argv)) return 1;
+  
+  if(testFunctionExecutionRequested()) {
+     if(executeTestFunction) {
+        executeTestFunction();
+     }
+     return 0;
+  }
 
   init();
   initVariant();
@@ -51,4 +64,3 @@ int main(int argc, char* argv[]) {
 
   return 0;
 }
-

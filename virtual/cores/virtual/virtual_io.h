@@ -10,6 +10,7 @@ bool initVirtualInput(int argc, char* argv[]);
 
 std::string getLineOfInput(bool anythingHeld);
 bool isInteractive(void);
+bool testFunctionExecutionRequested();
 void printHelp(void);
 
 unsigned currentCycle(void);  // current cycle number, first cycle is 0
