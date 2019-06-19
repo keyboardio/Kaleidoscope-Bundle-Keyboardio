@@ -13,9 +13,6 @@
 [submodule "avr/libraries/KeyboardioHID"]
 	path = avr/libraries/KeyboardioHID
 	url = https://github.com/keyboardio/KeyboardioHID
-[submodule "avr/libraries/HID"]
-	path = avr/libraries/HID
-	url = https://github.com/keyboardio/Arduino-HID
 [submodule "avr/libraries/Kaleidoscope"]
 	path = avr/libraries/Kaleidoscope
 	url = https://github.com/keyboardio/Kaleidoscope
