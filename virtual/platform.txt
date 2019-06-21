@@ -29,7 +29,10 @@ compiler.objcopy.cmd=objcopy
 compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
 compiler.elf2hex.flags=-O ihex -R .eeprom
 compiler.elf2hex.cmd=objcopy
+# Until Arduino learns to adhere to ldflags defined in library.properties, we have to define extra link flags for Kaleidoscope-Simulator here
+#
 compiler.ldflags=
+compiler.ldflags.linux=-lXtst -lX11 -lpthread
 compiler.size.cmd=echo >/dev/null
 
 # This can be overridden in boards.txt
@@ -70,19 +73,24 @@ recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compil
 ##              This is necessary to prevent link errors reporting unresolved symbols
 ##              due to order dependencies of libraries and objects appearing
 ##              in the linker command line.
+##
+## CHANGED WRT DEFAULT: Remove a pre-existing joined library. This is necessary if the library was not
+##                    removed at the end of a previous build, because the build process
+##                    terminated early after a failed attempt to link (e.g. because of missing symbols).
+recipe.hooks.linking.prelink.1.pattern={tools.rm_start.cmd} "{build.path}/{build.project_name}_joined.a" {tools.rm_end.cmd}
 ##              
 ## CHANGED WRT DEFAULT: Generate a large .a archive to prevent link order issues with garbage collection
 recipe.c.combine.pattern="{compiler.path}/{compiler.ar.cmd}" {compiler.c.elf.flags_join_archives} "{build.path}/{build.project_name}_joined.a" {object_files} "{build.path}/{archive_file}"
 ##
 ## NEWLY INTRODUCED: Link with global garbage collection (considering all
 ##                   objects and libraries together).
-recipe.hooks.linking.postlink.1.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}_joined.a" "-L{build.path}" -lm
+recipe.hooks.linking.postlink.1.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}_joined.a" "-L{build.path}" -lm {compiler.ldflags}
 ##
 ## NEWLY INTRODUCED: Removing the joined library is required to avoid malformed archives that
 ##                   would otherwise result when updating a pre-existing
 ##                   joined archive file during a subsequent firmware build.
 ##
-recipe.hooks.linking.postlink.2.pattern={tools.rm.cmd} "{build.path}/{build.project_name}_joined.a"
+recipe.hooks.linking.postlink.2.pattern={tools.rm_start.cmd} "{build.path}/{build.project_name}_joined.a" {tools.rm_end.cmd}
 ################################################################################
 
 # Run the test executable as a build step
@@ -137,8 +145,23 @@ tools.avrdude.bootloader.pattern=
 
 tools.avrdude_remote.upload.pattern=
 
-tools.rm.cmd=rm -f
-tools.rm.cmd.windows=powershell.exe Remove-Item -LiteralPath
+# Unlike rm on Unix-like systems, powershell's 'rm' command does not ignore non existing files
+# and terminates in error when the file that is to be removed cannot be found.
+# This would result in a premature termination of the overall build process that
+# must be prevented.
+#
+# To allow for possibly non-existing files being passed to command 'rm' we force 
+# powershell to ignore the resulting error and pass error value zero
+# back to the build system. 
+#
+# For this to work, the rm-command is split up in two
+# parts (start/end). The second (end) part is only required on Windows.
+#
+tools.rm_start.cmd=rm -f
+tools.rm_end.cmd=
+
+tools.rm_start.cmd.windows=powershell.exe rm -ErrorAction SilentlyContinue -LiteralPath
+tools.rm_end.cmd.windows= ; exit 0
 
 # USB Default Flags
 # Default blank usb manufacturer will be filled in at compile time
