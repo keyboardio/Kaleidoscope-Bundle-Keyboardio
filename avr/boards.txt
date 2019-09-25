@@ -173,6 +173,9 @@ atreus2.build.core=arduino:arduino
 atreus2.build.variant=atreus2
 
 
+model01.bootloader.pid=0x0036
+model01.bootloader.vid=0x2341
+
 atreus2.upload.tool=avrdude
 atreus2.upload.protocol=avr109
 atreus2.upload.maximum_size=28672
