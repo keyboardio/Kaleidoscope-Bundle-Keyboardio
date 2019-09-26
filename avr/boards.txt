@@ -154,9 +154,9 @@ ergodox.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidos
 
 ##############################################################
 
-atreus2.name=Atreus 2 Prototype
+atreus2.name=Atreus 2
 atreus2.vid.0=0x1209
-atreus2.pid.0=0xa1e5
+atreus2.pid.0=0x2303
 
 atreus2.upload.maximum_data_size=2560
 
@@ -165,16 +165,23 @@ atreus2.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidos
 atreus2.build.mcu=atmega32u4
 atreus2.build.f_cpu=16000000L
 atreus2.build.vid=0x1209
-atreus2.build.pid=0xa1e5
+atreus2.build.pid=0x2303
 atreus2.build.usb_product="Atreus2"
-atreus2.build.usb_manufacturer="Technomancy"
+atreus2.build.usb_manufacturer="Keyboardio"
 atreus2.build.board=AVR_ATREUS2
 atreus2.build.core=arduino:arduino
 atreus2.build.variant=atreus2
 
 
-model01.bootloader.pid=0x0036
-model01.bootloader.vid=0x2341
+atreus2.bootloader.tool=avrdude
+atreus2.bootloader.low_fuses=0xff
+atreus2.bootloader.high_fuses=0xd8
+atreus2.bootloader.extended_fuses=0xcb
+atreus2.bootloader.file=Atreus2/Caterina.hex
+atreus2.bootloader.unlock_bits=0x3F
+atreus2.bootloader.lock_bits=0x2F
+atreus2.bootloader.pid=0x2302
+
 
 atreus2.upload.tool=avrdude
 atreus2.upload.protocol=avr109
