@@ -25,8 +25,6 @@
 
 #include "Arduino.h"
 
-#include KALEIDOSCOPE_MCU_H
-
 /***
     EERef class.
     
@@ -77,7 +75,7 @@ struct EERef{
     
     int index; //Index of current EEPROM cell.
     
-    static uint8_t eeprom_[kaleidoscope::hardware::mcu::eeprom_size];
+    static uint8_t eeprom_[];
 };
 
 /***
@@ -128,7 +126,7 @@ struct EEPROMClass{
     //STL and C++11 iteration capability.
     EEPtr begin()                        { return 0x00; }
     EEPtr end()                          { return length(); } //Standards requires this to be the item after the last valid entry. The returned pointer is invalid.
-    uint16_t length()                    { return kaleidoscope::hardware::mcu::eeprom_size; }
+    uint16_t length();
     
     //Functionality to 'get' and 'put' objects to and from EEPROM.
     template< typename T > T &get( int idx, T &t ){
