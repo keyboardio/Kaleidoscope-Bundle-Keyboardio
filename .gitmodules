@@ -22,9 +22,6 @@
 [submodule "avr/libraries/Kaleidoscope-HIDAdaptor-KeyboardioHID"]
 	path = avr/libraries/Kaleidoscope-HIDAdaptor-KeyboardioHID
 	url = https://github.com/keyboardio/Kaleidoscope-HIDAdaptor-KeyboardioHID
-[submodule "avr/libraries/Kaleidoscope-Hardware-Virtual"]
-	path = avr/libraries/Kaleidoscope-Hardware-Virtual
-	url = https://github.com/keyboardio/Kaleidoscope-Hardware-Virtual
 [submodule "avr/bootloaders/Atreus2"]
 	path = avr/bootloaders/Atreus2
 	url = https://github.com/keyboardio/Atreus2-Bootloader
