@@ -79,6 +79,43 @@ keyboardio_imago.build.variant=keyboardio-imago
 keyboardio_imago.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Imago.h"'
 
 
+keyboardio_normcore.name=Keyboardio Normcore
+keyboardio_normcore.vid.0=0x1209
+keyboardio_normcore.pid.0=0x2303
+
+keyboardio_normcore.upload.tool=avrdude
+keyboardio_normcore.upload.protocol=avr109
+keyboardio_normcore.upload.maximum_size=28672
+keyboardio_normcore.upload.maximum_data_size=2560
+keyboardio_normcore.upload.speed=57600
+keyboardio_normcore.upload.disable_flushing=true
+keyboardio_normcore.upload.use_1200bps_touch=true
+keyboardio_normcore.upload.wait_for_upload_port=true
+
+keyboardio_normcore.bootloader.tool=avrdude
+keyboardio_normcore.bootloader.low_fuses=0xff
+keyboardio_normcore.bootloader.high_fuses=0xd8
+keyboardio_normcore.bootloader.extended_fuses=0xcb
+keyboardio_normcore.bootloader.file=caterina/Caterina.hex
+keyboardio_normcore.bootloader.unlock_bits=0x3F
+keyboardio_normcore.bootloader.lock_bits=0x2F
+keyboardio_normcore.bootloader.pid=0x2302
+keyboardio_normcore.bootloader.vid=0x1209
+
+
+keyboardio_normcore.build.mcu=atmega32u4
+keyboardio_normcore.build.f_cpu=16000000L
+keyboardio_normcore.build.vid=0x1209
+keyboardio_normcore.build.pid=0x2303
+keyboardio_normcore.build.usb_product="Normcore"
+keyboardio_normcore.build.usb_manufacturer="Keyboardio"
+keyboardio_normcore.build.board=AVR_KEYBOARDIO_NORMCORE
+keyboardio_normcore.build.core=arduino:arduino
+keyboardio_normcore.build.variant=keyboardio-imago
+keyboardio_normcore.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Normcore.h"'
+
+
+
 
 
 
