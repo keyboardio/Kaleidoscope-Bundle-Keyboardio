@@ -63,26 +63,21 @@ class PluggableUSBModule {
 };
 
 class PluggableUSB_ {
- public:
-  PluggableUSB_() {}
-  bool plug(PluggableUSBModule *node) {
-    return true;
-  }
-  int getInterface(uint8_t *interfaceCount) {
-    return 1;
-  }
-  int getDescriptor(USBSetup &setup) {
-    return 1;
-  }
-  bool setup(USBSetup &setup) {
-    return true;
-  }
-  void getShortName(char *iSerialNum) {}
-
- private:
-  uint8_t lastIf;
-  uint8_t lastEp;
-  PluggableUSBModule *rootNode;
+  public:
+    PluggableUSB_() {}
+    bool plug(PluggableUSBModule *node) {
+      return true;
+    }
+    int getInterface(uint8_t *interfaceCount) {
+      return 1;
+    }
+    int getDescriptor(USBSetup &setup) {
+      return 1;
+    }
+    bool setup(USBSetup &setup) {
+      return true;
+    }
+    void getShortName(char *iSerialNum) {}
 };
 
 // Replacement for global singleton.
