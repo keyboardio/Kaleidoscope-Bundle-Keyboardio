@@ -78,11 +78,6 @@ class PluggableUSB_ {
       return true;
     }
     void getShortName(char *iSerialNum) {}
-
-  private:
-    uint8_t lastIf;
-    uint8_t lastEp;
-    PluggableUSBModule *rootNode;
 };
 
 // Replacement for global singleton.
