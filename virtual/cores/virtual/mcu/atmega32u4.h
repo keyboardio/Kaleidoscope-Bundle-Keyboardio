@@ -24,9 +24,9 @@ namespace mcus {
 
 class atmega32u4 {
 
-  public:
+ public:
 
-    static constexpr int eeprom_size = 1024;
+  static constexpr int eeprom_size = 1024;
 };
 
 } // namespace mcus

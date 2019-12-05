@@ -36,53 +36,53 @@ struct EndpointDescriptor {
 struct USBSetup;
 
 class PluggableUSBModule {
-  public:
-    PluggableUSBModule(uint8_t numEps, uint8_t numIfs, uint8_t *epType) :
-      numEndpoints(numEps), numInterfaces(numIfs), endpointType(epType)
-    { }
+ public:
+  PluggableUSBModule(uint8_t numEps, uint8_t numIfs, uint8_t *epType) :
+    numEndpoints(numEps), numInterfaces(numIfs), endpointType(epType)
+  { }
 
-  protected:
-    virtual bool setup(USBSetup &setup) = 0;
-    virtual int getInterface(uint8_t *interfaceCount) = 0;
-    virtual int getDescriptor(USBSetup &setup) = 0;
-    virtual uint8_t getShortName(char *name) {
-      name[0] = 'A'+pluggedInterface;
-      return 1;
-    }
+ protected:
+  virtual bool setup(USBSetup &setup) = 0;
+  virtual int getInterface(uint8_t *interfaceCount) = 0;
+  virtual int getDescriptor(USBSetup &setup) = 0;
+  virtual uint8_t getShortName(char *name) {
+    name[0] = 'A' + pluggedInterface;
+    return 1;
+  }
 
-    uint8_t pluggedInterface = 0;
-    uint8_t pluggedEndpoint;
+  uint8_t pluggedInterface = 0;
+  uint8_t pluggedEndpoint;
 
-    const uint8_t numEndpoints;
-    const uint8_t numInterfaces;
-    const uint8_t *endpointType;
+  const uint8_t numEndpoints;
+  const uint8_t numInterfaces;
+  const uint8_t *endpointType;
 
-    PluggableUSBModule *next = nullptr;
+  PluggableUSBModule *next = nullptr;
 
-    friend class PluggableUSB_;
+  friend class PluggableUSB_;
 };
 
 class PluggableUSB_ {
-  public:
-    PluggableUSB_() {}
-    bool plug(PluggableUSBModule *node) {
-      return true;
-    }
-    int getInterface(uint8_t *interfaceCount) {
-      return 1;
-    }
-    int getDescriptor(USBSetup &setup) {
-      return 1;
-    }
-    bool setup(USBSetup &setup) {
-      return true;
-    }
-    void getShortName(char *iSerialNum) {}
+ public:
+  PluggableUSB_() {}
+  bool plug(PluggableUSBModule *node) {
+    return true;
+  }
+  int getInterface(uint8_t *interfaceCount) {
+    return 1;
+  }
+  int getDescriptor(USBSetup &setup) {
+    return 1;
+  }
+  bool setup(USBSetup &setup) {
+    return true;
+  }
+  void getShortName(char *iSerialNum) {}
 
-  private:
-    uint8_t lastIf;
-    uint8_t lastEp;
-    PluggableUSBModule *rootNode;
+ private:
+  uint8_t lastIf;
+  uint8_t lastEp;
+  PluggableUSBModule *rootNode;
 };
 
 // Replacement for global singleton.

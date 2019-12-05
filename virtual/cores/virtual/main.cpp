@@ -44,18 +44,18 @@ void init(void) {
 }
 
 int main(int argc, char* argv[]) {
-   
-   // Enable consumer code to read command line args.
-   //
-   parseCommandLine(argc, argv);
-   
+
+  // Enable consumer code to read command line args.
+  //
+  parseCommandLine(argc, argv);
+
   if (!initVirtualInput(argc, argv)) return 1;
-  
-  if(testFunctionExecutionRequested()) {
-     if(executeTestFunction) {
-        executeTestFunction();
-     }
-     return 0;
+
+  if (testFunctionExecutionRequested()) {
+    if (executeTestFunction) {
+      executeTestFunction();
+    }
+    return 0;
   }
 
   init();

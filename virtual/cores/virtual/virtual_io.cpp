@@ -63,7 +63,7 @@ bool initVirtualInput(int argc, char* argv[]) {
   if (strcmp(argv[1], "-i") == 0) {
     interactive = true;
     input = &std::cin;
-  } else if(strcmp(argv[1], "-t") == 0) {
+  } else if (strcmp(argv[1], "-t") == 0) {
     test_function = true;
   } else {
     interactive = false;

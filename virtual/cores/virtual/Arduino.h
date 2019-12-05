@@ -282,15 +282,33 @@ long map(long, long, long, long, long);
 
 #ifdef __cplusplus
 // Not sure if these are acceptable substitute definitions in our context or not
-inline uint8_t pgm_read_byte_near(const uint8_t *addr) { return *addr; }
-inline int8_t pgm_read_byte_near(const int8_t *addr) { return *addr; }
-inline char pgm_read_byte_near(const char *addr) { return *addr; }
-inline uint16_t pgm_read_word_near(const uint16_t *addr) { return *addr; }
-inline int16_t pgm_read_word_near(const int16_t *addr) { return *addr; }
-inline uint32_t pgm_read_dword_near(const uint32_t *addr) { return *addr; }
-inline int32_t pgm_read_dword_near(const int32_t *addr) { return *addr; }
-inline float pgm_read_float_near(const float *addr) { return *addr; }
-inline const void *pgm_read_ptr_near(const void **addr) { return *addr; }
+inline uint8_t pgm_read_byte_near(const uint8_t *addr) {
+  return *addr;
+}
+inline int8_t pgm_read_byte_near(const int8_t *addr) {
+  return *addr;
+}
+inline char pgm_read_byte_near(const char *addr) {
+  return *addr;
+}
+inline uint16_t pgm_read_word_near(const uint16_t *addr) {
+  return *addr;
+}
+inline int16_t pgm_read_word_near(const int16_t *addr) {
+  return *addr;
+}
+inline uint32_t pgm_read_dword_near(const uint32_t *addr) {
+  return *addr;
+}
+inline int32_t pgm_read_dword_near(const int32_t *addr) {
+  return *addr;
+}
+inline float pgm_read_float_near(const float *addr) {
+  return *addr;
+}
+inline const void *pgm_read_ptr_near(const void **addr) {
+  return *addr;
+}
 #else
 #define pgm_read_byte_near(addr) (*(const byte*)(addr))
 #define pgm_read_word_near(addr) (*(const word*)(addr))
