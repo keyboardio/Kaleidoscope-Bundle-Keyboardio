@@ -168,3 +168,11 @@ tools.rm_end.cmd.windows= ; exit 0
 # - from numeric vendor ID, set to Unknown otherwise
 build.usb_manufacturer="Unknown"
 build.usb_flags=-DUSB_VID={build.vid} -DUSB_PID={build.pid} '-DUSB_MANUFACTURER={build.usb_manufacturer}' '-DUSB_PRODUCT={build.usb_product}'
+
+# ctags configuration
+# Remove from the Arduino core in 1.8.10.
+# Jesse isn't sure why arduino removed it, but adding it here for now to unbreak builds
+# ------------------------------
+tools.ctags.path={runtime.tools.ctags.path}
+tools.ctags.cmd.path={path}/ctags
+tools.ctags.pattern="{cmd.path}" -u --language-force=c++ -f - --c++-kinds=svpf --fields=KSTtzns --line-directives "{source_file}"
