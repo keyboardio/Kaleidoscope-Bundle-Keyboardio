@@ -27,7 +27,7 @@ compiler.c.elf.flags_join_archives=rcT
 compiler.c.elf.cmd=avr-gcc
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=avr-g++
-compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=gnu++11 -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD
+compiler.cpp.flags=-c -g -Os {compiler.warning_flags} -std=c++14 -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-ignored-qualifiers
 compiler.ar.cmd=avr-ar
 compiler.ar.flags=rcs
 compiler.objcopy.cmd=avr-objcopy
@@ -44,7 +44,7 @@ build.extra_flags=
 compiler.c.extra_flags=
 compiler.c.elf.extra_flags=
 compiler.S.extra_flags=
-compiler.cpp.extra_flags=-Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-ignored-qualifiers
+compiler.cpp.extra_flags=
 compiler.ar.extra_flags=
 compiler.objcopy.eep.extra_flags=
 compiler.elf2hex.extra_flags=

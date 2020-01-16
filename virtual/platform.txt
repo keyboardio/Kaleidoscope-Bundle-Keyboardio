@@ -22,7 +22,7 @@ compiler.c.elf.flags_join_archives=rcT
 compiler.c.elf.cmd=g++
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=g++
-compiler.cpp.flags=-c -g {compiler.warning_flags} -std=gnu++11 -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD  -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1
+compiler.cpp.flags=-c -g {compiler.warning_flags} -std=c++14 -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-ignored-qualifiers -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1
 compiler.ar.cmd=ar
 compiler.ar.flags=rcs
 compiler.objcopy.cmd=objcopy
