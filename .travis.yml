@@ -3,10 +3,10 @@ sudo: false
 os:
 - linux
 install:
-- mkdir -p hardware/
-- ln -s `pwd` hardware/keyboardio
+- mkdir -p ../hardware/
+- ln -s `pwd` ../hardware/keyboardio
 script:
-- make travis-test-all BOARD_HARDWARE_PATH=$(pwd)/hardware
+- make travis-test-all BOARD_HARDWARE_PATH=$(pwd)/../hardware
 branches:
   except:
   - gh-pages
@@ -20,7 +20,7 @@ notifications:
   email:
     on_success: change
     on_failure: change
-cache: 
+cache:
   ccache: true
   directories:
     - .ccache
