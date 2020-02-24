@@ -37,6 +37,7 @@ model01.build.usb_manufacturer="Keyboardio"
 model01.build.board=AVR_MODEL01
 model01.build.core=arduino:arduino
 model01.build.variant=model01
+model01.build.flashing_instructions="To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.\n\n(When the 'Prog' key glows red, you can release it.)"
 # TODO - the hardware spec / hardware duplication here makes Jesse unhappy. he would not like to see it live here long-term
 model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Model01.h"'
 
@@ -171,6 +172,7 @@ atreus2.build.usb_manufacturer="Keyboardio"
 atreus2.build.board=AVR_ATREUS2
 atreus2.build.core=arduino:arduino
 atreus2.build.variant=atreus2
+model01.build.flashing_instructions="To update your keyboard's firmware, hold down the key in the lower left corner of your Atreus."
 
 
 atreus2.bootloader.tool=avrdude
