@@ -172,7 +172,7 @@ atreus2.build.usb_manufacturer="Keyboardio"
 atreus2.build.board=AVR_ATREUS2
 atreus2.build.core=arduino:arduino
 atreus2.build.variant=atreus2
-model01.build.flashing_instructions="To update your keyboard's firmware, hold down the key in the lower left corner of your Atreus."
+atreus2.build.flashing_instructions="To update your keyboard's firmware, hold down the key in the lower left corner of your Atreus."
 
 
 atreus2.bootloader.tool=avrdude
