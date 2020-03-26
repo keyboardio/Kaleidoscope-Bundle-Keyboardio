@@ -162,7 +162,7 @@ atreus2.pid.0=0x2303
 atreus2.upload.maximum_data_size=2560
 
 ## defaults
-atreus2.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus2.h"'
+atreus2.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus2.h"' -DUSB_CONFIG_POWER=(25)
 atreus2.build.mcu=atmega32u4
 atreus2.build.f_cpu=16000000L
 atreus2.build.vid=0x1209
