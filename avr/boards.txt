@@ -155,44 +155,44 @@ ergodox.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidos
 
 ##############################################################
 
-atreus2.name=Atreus 2
-atreus2.vid.0=0x1209
-atreus2.pid.0=0x2303
+keyboardio_atreus.name=Keyboardio Atreus
+keyboardio_atreus.vid.0=0x1209
+keyboardio_atreus.pid.0=0x2303
 
-atreus2.upload.maximum_data_size=2560
+keyboardio_atreus.upload.maximum_data_size=2560
 
 ## defaults
-atreus2.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus2.h"' -DUSB_CONFIG_POWER=(25)
-atreus2.build.mcu=atmega32u4
-atreus2.build.f_cpu=16000000L
-atreus2.build.vid=0x1209
-atreus2.build.pid=0x2303
-atreus2.build.usb_product="Atreus2"
-atreus2.build.usb_manufacturer="Keyboardio"
-atreus2.build.board=AVR_ATREUS2
-atreus2.build.core=arduino:arduino
-atreus2.build.variant=atreus2
-atreus2.build.flashing_instructions="To update your keyboard's firmware, hold down the key in the lower left corner of your Atreus."
+keyboardio_atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Atreus.h"' -DUSB_CONFIG_POWER=(25)
+keyboardio_atreus.build.mcu=atmega32u4
+keyboardio_atreus.build.f_cpu=16000000L
+keyboardio_atreus.build.vid=0x1209
+keyboardio_atreus.build.pid=0x2303
+keyboardio_atreus.build.usb_product="Atreus"
+keyboardio_atreus.build.usb_manufacturer="Keyboardio"
+keyboardio_atreus.build.board=AVR_KEYBOARDIO_ATREUS
+keyboardio_atreus.build.core=arduino:arduino
+keyboardio_atreus.build.variant=keyboardio-atreus
+keyboardio_atreus.build.flashing_instructions="To update your keyboard's firmware, hold down the key in the lower left corner of your Atreus."
 
 
-atreus2.bootloader.tool=avrdude
-atreus2.bootloader.low_fuses=0xff
-atreus2.bootloader.high_fuses=0xd8
-atreus2.bootloader.extended_fuses=0xcb
-atreus2.bootloader.file=Atreus2/Caterina.hex
-atreus2.bootloader.unlock_bits=0x3F
-atreus2.bootloader.lock_bits=0x2F
-atreus2.bootloader.pid=0x2302
+keyboardio_atreus.bootloader.tool=avrdude
+keyboardio_atreus.bootloader.low_fuses=0xff
+keyboardio_atreus.bootloader.high_fuses=0xd8
+keyboardio_atreus.bootloader.extended_fuses=0xcb
+keyboardio_atreus.bootloader.file=Atreus2/Caterina.hex
+keyboardio_atreus.bootloader.unlock_bits=0x3F
+keyboardio_atreus.bootloader.lock_bits=0x2F
+keyboardio_atreus.bootloader.pid=0x2302
 
 
-atreus2.upload.tool=avrdude
-atreus2.upload.protocol=avr109
-atreus2.upload.maximum_size=28672
-atreus2.upload.maximum_data_size=2560
-atreus2.upload.speed=57600
-atreus2.upload.disable_flushing=true
-atreus2.upload.use_1200bps_touch=true
-atreus2.upload.wait_for_upload_port=true
+keyboardio_atreus.upload.tool=avrdude
+keyboardio_atreus.upload.protocol=avr109
+keyboardio_atreus.upload.maximum_size=28672
+keyboardio_atreus.upload.maximum_data_size=2560
+keyboardio_atreus.upload.speed=57600
+keyboardio_atreus.upload.disable_flushing=true
+keyboardio_atreus.upload.use_1200bps_touch=true
+keyboardio_atreus.upload.wait_for_upload_port=true
 
 
 
