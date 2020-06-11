@@ -6,6 +6,7 @@ install:
 - mkdir -p ../hardware/
 - ln -s `pwd` ../hardware/keyboardio
 script:
+- make prepare-virtual
 - make travis-test-all BOARD_HARDWARE_PATH=$(pwd)/../hardware
 branches:
   except:
