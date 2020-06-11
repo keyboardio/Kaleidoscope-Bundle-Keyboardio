@@ -27,6 +27,9 @@ KALEIDOSCOPE_BUILDER_DIR ?= ./avr/libraries/Kaleidoscope/bin/
 
 endif
 
+prepare-virtual:
+	sed -e "s/\(.*\)\.build\.core=arduino:arduino/\1.build.core=keyboardio:arduino/" avr/boards.txt >virtual/boards.txt
+
 update-submodules: checkout-submodules
 	@echo "All Kaleidoscope libraries have been updated from GitHub"
 
