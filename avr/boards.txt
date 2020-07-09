@@ -288,3 +288,53 @@ kbd4x.build.variant=kbdfans-kbd4x
 kbd4x.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-KBDFans-KBD4x.h"'
 
 ##############################################################
+
+gheavy_faunchpad.name=gHeavy FaunchPad
+gheavy_faunchpad.vid.0=0xfeed
+gheavy_faunchpad.pid.0=0x1337
+
+gheavy_faunchpad.upload.tool=dfu-programmer
+gheavy_faunchpad.upload.protocol=dfu
+gheavy_faunchpad.upload.maximum_size=28672
+gheavy_faunchpad.upload.maximum_data_size=2560
+gheavy_faunchpad.upload.speed=57600
+gheavy_faunchpad.upload.disable_flushing=true
+gheavy_faunchpad.upload.use_1200bps_touch=false
+gheavy_faunchpad.upload.wait_for_upload_port=true
+
+gheavy_faunchpad.build.mcu=atmega32u4
+gheavy_faunchpad.build.f_cpu=16000000L
+gheavy_faunchpad.build.vid=0xfeed
+gheavy_faunchpad.build.pid=0x000
+gheavy_faunchpad.build.usb_product="FaunchPad"
+gheavy_faunchpad.build.usb_manufacturer="g Heavy Industries"
+gheavy_faunchpad.build.board=AVR_GHEAVY_FAUNCHPAD
+gheavy_faunchpad.build.core=arduino:arduino
+gheavy_faunchpad.build.variant=gheavy-faunchpad
+gheavy_faunchpad.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-FaunchPad.h"'
+
+##############################################################
+
+gheavy_butterstick.name=gHeavy Butter Stick
+gheavy_butterstick.vid.0=0xfeed
+gheavy_butterstick.pid.0=0x1337
+
+gheavy_butterstick.upload.tool=dfu-programmer
+gheavy_butterstick.upload.protocol=dfu
+gheavy_butterstick.upload.maximum_size=28672
+gheavy_butterstick.upload.maximum_data_size=2560
+gheavy_butterstick.upload.speed=57600
+gheavy_butterstick.upload.disable_flushing=true
+gheavy_butterstick.upload.use_1200bps_touch=false
+gheavy_butterstick.upload.wait_for_upload_port=true
+
+gheavy_butterstick.build.mcu=atmega32u4
+gheavy_butterstick.build.f_cpu=16000000L
+gheavy_butterstick.build.vid=0xfeed
+gheavy_butterstick.build.pid=0x000
+gheavy_butterstick.build.usb_product="Butter Stick"
+gheavy_butterstick.build.usb_manufacturer="g Heavy Industries"
+gheavy_butterstick.build.board=AVR_GHEAVY_BUTTERSTICK
+gheavy_butterstick.build.core=arduino:arduino
+gheavy_butterstick.build.variant=gheavy-butterstick
+gheavy_butterstick.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-ButterStick.h"'
