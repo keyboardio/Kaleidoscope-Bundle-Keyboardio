@@ -21,7 +21,7 @@ compiler.warning_flags.all=-Wall -Wextra
 compiler.path={runtime.tools.avr-gcc.path}/bin/
 #compiler.path=/usr/bin/
 compiler.c.cmd=avr-gcc
-compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD
+compiler.c.flags=-c -g -Os {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -Wimplicit-fallthrough=3
 compiler.c.elf.flags={compiler.warning_flags} -Os -Wl,--gc-sections "-Wl,-Map={build.path}/{build.project_name}.elf.map"
 compiler.c.elf.flags_join_archives=rcT
 compiler.c.elf.cmd=avr-gcc
