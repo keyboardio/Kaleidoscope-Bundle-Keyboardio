@@ -338,3 +338,81 @@ gheavy_butterstick.build.board=AVR_GHEAVY_BUTTERSTICK
 gheavy_butterstick.build.core=arduino:arduino
 gheavy_butterstick.build.variant=gheavy-butterstick
 gheavy_butterstick.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-ButterStick.h"'
+
+##############################################################
+
+gheavy_ginny.name=gHeavy Ginny
+gheavy_ginny.vid.0=0xfeed
+gheavy_ginny.pid.0=0x1337
+
+gheavy_ginny.upload.tool=dfu-programmer
+gheavy_ginny.upload.protocol=dfu
+gheavy_ginny.upload.maximum_size=28672
+gheavy_ginny.upload.maximum_data_size=2560
+gheavy_ginny.upload.speed=57600
+gheavy_ginny.upload.disable_flushing=true
+gheavy_ginny.upload.use_1200bps_touch=false
+gheavy_ginny.upload.wait_for_upload_port=true
+
+gheavy_ginny.build.mcu=atmega32u4
+gheavy_ginny.build.f_cpu=16000000L
+gheavy_ginny.build.vid=0xfeed
+gheavy_ginny.build.pid=0x000
+gheavy_ginny.build.usb_product="Ginny"
+gheavy_ginny.build.usb_manufacturer="g Heavy Industries"
+gheavy_ginny.build.board=AVR_GHEAVY_GINNY
+gheavy_ginny.build.core=arduino:arduino
+gheavy_ginny.build.variant=gheavy-ginny
+gheavy_ginny.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-Ginny.h"'
+
+##############################################################
+
+gheavy_georgi.name=gHeavy Georgi
+gheavy_georgi.vid.0=0xfeed
+gheavy_georgi.pid.0=0x1337
+
+gheavy_georgi.upload.tool=dfu-programmer
+gheavy_georgi.upload.protocol=dfu
+gheavy_georgi.upload.maximum_size=28672
+gheavy_georgi.upload.maximum_data_size=2560
+gheavy_georgi.upload.speed=57600
+gheavy_georgi.upload.disable_flushing=true
+gheavy_georgi.upload.use_1200bps_touch=false
+gheavy_georgi.upload.wait_for_upload_port=true
+
+gheavy_georgi.build.mcu=atmega32u4
+gheavy_georgi.build.f_cpu=16000000L
+gheavy_georgi.build.vid=0xfeed
+gheavy_georgi.build.pid=0x000
+gheavy_georgi.build.usb_product="Georgi"
+gheavy_georgi.build.usb_manufacturer="g Heavy Industries"
+gheavy_georgi.build.board=AVR_GHEAVY_GEORGI
+gheavy_georgi.build.core=arduino:arduino
+gheavy_georgi.build.variant=gheavy-georgi
+gheavy_georgi.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-Georgi.h"'
+
+##############################################################
+
+gheavy_gergo.name=gHeavy Gergo
+gheavy_gergo.vid.0=0xfeed
+gheavy_gergo.pid.0=0x1337
+
+gheavy_gergo.upload.tool=dfu-programmer
+gheavy_gergo.upload.protocol=dfu
+gheavy_gergo.upload.maximum_size=28672
+gheavy_gergo.upload.maximum_data_size=2560
+gheavy_gergo.upload.speed=57600
+gheavy_gergo.upload.disable_flushing=true
+gheavy_gergo.upload.use_1200bps_touch=false
+gheavy_gergo.upload.wait_for_upload_port=true
+
+gheavy_gergo.build.mcu=atmega32u4
+gheavy_gergo.build.f_cpu=16000000L
+gheavy_gergo.build.vid=0xfeed
+gheavy_gergo.build.pid=0x000
+gheavy_gergo.build.usb_product="Gergo"
+gheavy_gergo.build.usb_manufacturer="g Heavy Industries"
+gheavy_gergo.build.board=AVR_GHEAVY_GERGO
+gheavy_gergo.build.core=arduino:arduino
+gheavy_gergo.build.variant=gheavy-gergo
+gheavy_gergo.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-Gergo.h"'
