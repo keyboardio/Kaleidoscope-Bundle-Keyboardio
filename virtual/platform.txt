@@ -18,7 +18,7 @@ compiler.path=
 compiler.c.cmd=gcc
 compiler.c.flags=-c -g {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1
 compiler.c.elf.flags={compiler.warning_flags}
-compiler.c.elf.flags_join_archives=rcT
+compiler.c.elf.flags_join_archives=rc
 compiler.c.elf.cmd=g++
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=g++
