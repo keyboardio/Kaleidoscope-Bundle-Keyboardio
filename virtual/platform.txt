@@ -22,7 +22,7 @@ compiler.c.elf.flags_join_archives=rcT
 compiler.c.elf.cmd=g++
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=g++
-compiler.cpp.flags=-c -g {compiler.warning_flags} -std=c++14 -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-ignored-qualifiers -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1
+compiler.cpp.flags=-c -g {compiler.warning_flags} -std=c++14 -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-ignored-qualifiers -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1 -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googletest/include -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googlemock/include -I{runtime.platform.path}/libraries/Kaleidoscope/fake-gtest/src
 compiler.ar.cmd=ar
 compiler.ar.flags=rcs
 compiler.objcopy.cmd=objcopy
@@ -32,7 +32,7 @@ compiler.elf2hex.cmd=objcopy
 # Until Arduino learns to adhere to ldflags defined in library.properties, we have to define extra link flags for Kaleidoscope-Simulator here
 #
 compiler.ldflags=
-compiler.ldflags.linux=-lXtst -lX11 -lpthread
+compiler.ldflags.linux=-lXtst -lX11 -lpthread -L{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/lib -lgtest -lgmock
 compiler.size.cmd=echo >/dev/null
 
 # This can be overridden in boards.txt
