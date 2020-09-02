@@ -39,7 +39,7 @@ model01.build.core=arduino:arduino
 model01.build.variant=model01
 model01.build.flashing_instructions="To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.\n\n(When the 'Prog' key glows red, you can release it.)"
 # TODO - the hardware spec / hardware duplication here makes Jesse unhappy. he would not like to see it live here long-term
-model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Model01.h"'
+model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Model01.h"' -DKALEIDOSCOPE_HARDWARE_MODEL01
 
 
 
@@ -77,7 +77,7 @@ keyboardio_imago.build.usb_manufacturer="Keyboardio"
 keyboardio_imago.build.board=AVR_KEYBOARDIO_IMAGO
 keyboardio_imago.build.core=arduino:arduino
 keyboardio_imago.build.variant=keyboardio-imago
-keyboardio_imago.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Imago.h"'
+keyboardio_imago.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Imago.h"' -DKALEIDOSCOPE_HARDWARE_KEYBOARDIO_IMAGO
 
 
 
@@ -129,7 +129,7 @@ planck.build.usb_manufacturer="OLKB"
 planck.build.board=AVR_PLANCK
 planck.build.core=arduino:arduino
 planck.build.variant=olkb-planck
-planck.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-OLKB-Planck.h"'
+planck.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-OLKB-Planck.h"' -DKALEIDOSCOPE_HARDWARE_OLKB_PLANCK
 
 ##############################################################
 
@@ -151,7 +151,7 @@ ergodox.build.usb_manufacturer="ErgoDox EZ"
 ergodox.build.board=AVR_ERGODOX
 ergodox.build.core=arduino:arduino
 ergodox.build.variant=ergodox
-ergodox.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-EZ-ErgoDox.h"' '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0'
+ergodox.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-EZ-ErgoDox.h"' '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0' -DKALEIDOSCOPE_HARDWARE_EZ_ERGODOX
 
 ##############################################################
 
@@ -162,7 +162,7 @@ keyboardio_atreus.pid.0=0x2303
 keyboardio_atreus.upload.maximum_data_size=2560
 
 ## defaults
-keyboardio_atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Atreus.h"' -DUSB_CONFIG_POWER=(25)
+keyboardio_atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Atreus.h"' -DUSB_CONFIG_POWER=(25) -DKALEIDOSCOPE_HARDWARE_KEYBOARDIO_ATREUS
 keyboardio_atreus.build.mcu=atmega32u4
 keyboardio_atreus.build.f_cpu=16000000L
 keyboardio_atreus.build.vid=0x1209
@@ -204,7 +204,7 @@ atreus.pid.0=0xa1e5
 atreus.upload.maximum_data_size=2560
 
 ## defaults
-atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR=1
+atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR=1 -DKALEIDOSCOPE_HARDWARE_TECHNOMANCY_ATREUS
 
 atreus.menu.cpu.astar=A*
 atreus.menu.cpu.astar.upload.tool=avrdude
@@ -219,13 +219,13 @@ atreus.menu.cpu.teensy.upload.protocol=halfkay
 atreus.menu.cpu.teensy.upload.maximum_size=32256
 
 atreus.menu.pinout.post2016=Post-2016 PCB
-atreus.menu.pinout.post2016.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR=1
+atreus.menu.pinout.post2016.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR=1 -DKALEIDOSCOPE_HARDWARE_TECHNOMANCY_ATREUS
 
 atreus.menu.pinout.pre2016=Pre-2016 PCB
-atreus.menu.pinout.pre2016.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR_DOWN=1
+atreus.menu.pinout.pre2016.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR_DOWN=1 -DKALEIDOSCOPE_HARDWARE_TECHNOMANCY_ATREUS
 
 atreus.menu.pinout.legacy_teensy2=Legacy Teensy2
-atreus.menu.pinout.legacy_teensy2.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_LEGACY_TEENSY2=1
+atreus.menu.pinout.legacy_teensy2.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_LEGACY_TEENSY2=1 -DKALEIDOSCOPE_HARDWARE_TECHNOMANCY_ATREUS
 
 atreus.build.mcu=atmega32u4
 atreus.build.f_cpu=16000000L
@@ -259,7 +259,7 @@ splitography.build.usb_manufacturer="SOFT/HRUF"
 splitography.build.board=AVR_SPLITOGRAPHY
 splitography.build.core=arduino:arduino
 splitography.build.variant=softhruf-splitography
-splitography.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-SOFTHRUF-Splitography.h"'
+splitography.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-SOFTHRUF-Splitography.h"' -DKALEIDOSCOPE_HARDWARE_SOFTHRUF_SPLITOGRAPHY
 
 ##############################################################
 
@@ -285,7 +285,7 @@ kbd4x.build.usb_manufacturer="KBD4x"
 kbd4x.build.board=AVR_KBD4X
 kbd4x.build.core=arduino:arduino
 kbd4x.build.variant=kbdfans-kbd4x
-kbd4x.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-KBDFans-KBD4x.h"'
+kbd4x.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-KBDFans-KBD4x.h"' -DKALEIDOSCOPE_HARDWARE_KBDFANS_KBD4X
 
 ##############################################################
 
@@ -311,7 +311,7 @@ gheavy_faunchpad.build.usb_manufacturer="g Heavy Industries"
 gheavy_faunchpad.build.board=AVR_GHEAVY_FAUNCHPAD
 gheavy_faunchpad.build.core=arduino:arduino
 gheavy_faunchpad.build.variant=gheavy-faunchpad
-gheavy_faunchpad.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-FaunchPad.h"'
+gheavy_faunchpad.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-FaunchPad.h"' -DKALEIDOSCOPE_HARDWARE_GHEAVY_FAUNCHPAD
 
 ##############################################################
 
@@ -337,7 +337,7 @@ gheavy_butterstick.build.usb_manufacturer="g Heavy Industries"
 gheavy_butterstick.build.board=AVR_GHEAVY_BUTTERSTICK
 gheavy_butterstick.build.core=arduino:arduino
 gheavy_butterstick.build.variant=gheavy-butterstick
-gheavy_butterstick.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-ButterStick.h"'
+gheavy_butterstick.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-ButterStick.h"' -DKALEIDOSCOPE_HARDWARE_GHEAVY_BUTTERSTICK
 
 ##############################################################
 
@@ -363,7 +363,7 @@ gheavy_ginny.build.usb_manufacturer="g Heavy Industries"
 gheavy_ginny.build.board=AVR_GHEAVY_GINNY
 gheavy_ginny.build.core=arduino:arduino
 gheavy_ginny.build.variant=gheavy-ginny
-gheavy_ginny.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-Ginny.h"'
+gheavy_ginny.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-Ginny.h"' -DKALEIDOSCOPE_HARDWARE_GHEAVY_GINNY
 
 ##############################################################
 
@@ -389,7 +389,7 @@ gheavy_georgi.build.usb_manufacturer="g Heavy Industries"
 gheavy_georgi.build.board=AVR_GHEAVY_GEORGI
 gheavy_georgi.build.core=arduino:arduino
 gheavy_georgi.build.variant=gheavy-georgi
-gheavy_georgi.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-Georgi.h"'
+gheavy_georgi.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-Georgi.h"' -DKALEIDOSCOPE_HARDWARE_GHEAVY_GEORGI
 
 ##############################################################
 
@@ -415,4 +415,4 @@ gheavy_gergo.build.usb_manufacturer="g Heavy Industries"
 gheavy_gergo.build.board=AVR_GHEAVY_GERGO
 gheavy_gergo.build.core=arduino:arduino
 gheavy_gergo.build.variant=gheavy-gergo
-gheavy_gergo.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-Gergo.h"'
+gheavy_gergo.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-gHeavy-Gergo.h"' -DKALEIDOSCOPE_HARDWARE_GHEAVY_GERGO
