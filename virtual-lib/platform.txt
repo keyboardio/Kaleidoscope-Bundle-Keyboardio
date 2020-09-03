@@ -1,0 +1,165 @@
+
+# For more info:
+# https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
+
+name=BETA Virtualized Kaleidoscope Keyboards (for developers)
+version=1.6.11
+
+# This file is for "virtual" hardware which means we compile the sketch for
+# x86, and with an entirely different core.
+
+compiler.warning_flags=-w
+compiler.warning_flags.none=-w
+compiler.warning_flags.default=
+compiler.warning_flags.more=-Wall
+compiler.warning_flags.all=-Wall -Wextra
+
+compiler.path=
+compiler.c.cmd=gcc
+compiler.c.flags=-c -g {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1
+compiler.c.elf.flags={compiler.warning_flags}
+compiler.c.elf.flags_join_archives=rcT
+compiler.c.elf.cmd=g++
+compiler.S.flags=-c -g -x assembler-with-cpp
+compiler.cpp.cmd=g++
+compiler.cpp.flags=-c -g {compiler.warning_flags} -std=c++14 -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-ignored-qualifiers -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1 -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googletest/include -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googlemock/include -I{runtime.platform.path}/libraries/Kaleidoscope/fake-gtest/src
+compiler.ar.cmd=ar
+compiler.ar.flags=rcs
+compiler.objcopy.cmd=objcopy
+compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
+compiler.elf2hex.flags=-O ihex -R .eeprom
+compiler.elf2hex.cmd=objcopy
+# Until Arduino learns to adhere to ldflags defined in library.properties, we have to define extra link flags for Kaleidoscope-Simulator here
+#
+compiler.ldflags=
+compiler.ldflags.linux=-lXtst -lX11 -lpthread -L{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/lib -lgtest -lgmock
+compiler.size.cmd=echo >/dev/null
+
+# This can be overridden in boards.txt
+build.extra_flags=
+
+# These can be overridden in platform.local.txt
+compiler.c.extra_flags=-Wno-unused-parameter -Wno-unused-variable -Wno-type-limits
+compiler.c.elf.extra_flags=
+compiler.S.extra_flags=
+compiler.cpp.extra_flags=-Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-type-limits
+compiler.ar.extra_flags=
+compiler.objcopy.eep.extra_flags=
+compiler.elf2hex.extra_flags=
+
+# AVR compile patterns
+# --------------------
+
+## Compile c files
+recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.c.flags} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {build.usb_flags} {compiler.c.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
+
+## Compile c++ files
+recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {build.usb_flags} {compiler.cpp.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
+
+## Compile S files
+recipe.S.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.S.flags} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {build.usb_flags} {compiler.S.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
+
+## Create archives
+# archive_file_path is needed for backwards compatibility with IDE 1.6.5 or older, IDE 1.6.6 or newer overrides this value
+archive_file_path={build.path}/{archive_file}
+recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{archive_file_path}" "{object_file}"
+
+################################################################################
+## PLEASE NOTE: The way we link our elf binary significantly differs from the
+##              way that Arduino handles things by default.
+##              The original linker command has been split up into three
+##              steps (recipe.c.combine.pattern, recipe.hooks.linking.postlink.1.pattern
+##              and recipe.hooks.linking.postlink.2.pattern).
+##              This is necessary to prevent link errors reporting unresolved symbols
+##              due to order dependencies of libraries and objects appearing
+##              in the linker command line.
+##
+## CHANGED WRT DEFAULT: Generate a large .a archive to be linked higher up in the build system.
+recipe.c.combine.pattern="{compiler.path}/{compiler.ar.cmd}" {compiler.c.elf.flags_join_archives} "{build.path}/{build.project_name}.a" {object_files} "{build.path}/{archive_file}"
+################################################################################
+
+## Compute size
+recipe.size.pattern=echo "[size not computed for virtual build]"
+recipe.size.regex=^.*
+recipe.size.regex.data=^.*
+recipe.size.regex.eeprom=^.*
+
+## Preprocessor
+preproc.includes.flags=-w -x c++ -M -MG -MP
+recipe.preproc.includes="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} {preproc.includes.flags} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {build.usb_flags} {compiler.cpp.extra_flags} {build.extra_flags} {includes} "{source_file}"
+
+preproc.macros.flags=-w -x c++ -E -CC
+recipe.preproc.macros="{compiler.path}{compiler.cpp.cmd}" {compiler.cpp.flags} {preproc.macros.flags} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {build.usb_flags} {compiler.cpp.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{preprocessed_file_path}"
+
+# AVR Uploader/Programmers tools
+# ------------------------------
+
+tools.avrdude.path={runtime.tools.avrdude.path}
+tools.avrdude.cmd.path={path}/bin/avrdude
+tools.avrdude.config.path={path}/etc/avrdude.conf
+
+tools.avrdude.upload.params.verbose=-v
+tools.avrdude.upload.params.quiet=-q -q
+tools.avrdude.upload.params.noverify=-V
+tools.avrdude.upload.pattern=
+
+tools.avrdude.program.params.verbose=-v
+tools.avrdude.program.params.quiet=-q -q
+tools.avrdude.program.params.noverify=-V
+tools.avrdude.program.pattern=
+
+tools.avrdude.erase.params.verbose=-v
+tools.avrdude.erase.params.quiet=-q -q
+tools.avrdude.erase.pattern=
+
+tools.avrdude.bootloader.params.verbose=-v
+tools.avrdude.bootloader.params.quiet=-q -q
+tools.avrdude.bootloader.pattern=
+
+tools.avrdude_remote.upload.pattern=
+
+# Unlike rm on Unix-like systems, powershell's 'rm' command does not ignore non existing files
+# and terminates in error when the file that is to be removed cannot be found.
+# This would result in a premature termination of the overall build process that
+# must be prevented.
+#
+# To allow for possibly non-existing files being passed to command 'rm' we force
+# powershell to ignore the resulting error and pass error value zero
+# back to the build system.
+#
+# For this to work, the rm-command is split up in two
+# parts (start/end). The second (end) part is only required on Windows.
+#
+tools.rm_start.cmd=rm -f
+tools.rm_end.cmd=
+
+tools.rm_start.cmd.windows=powershell.exe rm -ErrorAction SilentlyContinue -LiteralPath
+tools.rm_end.cmd.windows= ; exit 0
+
+# USB Default Flags
+# Default blank usb manufacturer will be filled in at compile time
+# - from numeric vendor ID, set to Unknown otherwise
+build.usb_manufacturer="Unknown"
+build.usb_flags=-DUSB_VID={build.vid} -DUSB_PID={build.pid} '-DUSB_MANUFACTURER={build.usb_manufacturer}' '-DUSB_PRODUCT={build.usb_product}'
+
+# ctags configuration
+# Remove from the Arduino core in 1.8.10.
+# Jesse isn't sure why arduino removed it, but adding it here for now to unbreak builds
+# ------------------------------
+tools.ctags.path={runtime.tools.ctags.path}
+tools.ctags.cmd.path={path}/ctags
+tools.ctags.pattern="{cmd.path}" -u --language-force=c++ -f - --c++-kinds=svpf --fields=KSTtzns --line-directives "{source_file}"
+
+# The following recipes enable adding code to specific places
+# of the preprocessed firmware sketch. This is done by pasting
+# the content of two files
+#   kaleidoscope_internal/sketch_preprocessing/sketch_header.h,
+#   kaleidoscope_internal/sketch_preprocessing/sketch_footer.h
+# to the top and the bottom of the preprocessed sketch file.
+
+recipe.hooks.sketch.prebuild.1.pattern=mv "{build.path}/sketch/{build.project_name}.cpp" "{build.path}/sketch/{build.project_name}.cpp.bak"
+recipe.hooks.sketch.prebuild.2.pattern=sh -c "cat {runtime.platform.path}/libraries/Kaleidoscope/src/kaleidoscope_internal/sketch_preprocessing/sketch_header.h {build.path}/sketch/{build.project_name}.cpp.bak {runtime.platform.path}/libraries/Kaleidoscope/src/kaleidoscope_internal/sketch_preprocessing/sketch_footer.h > {build.path}/sketch/{build.project_name}.cpp"
+
+recipe.hooks.sketch.prebuild.1.pattern.windows={tools.rm_start.cmd} "{build.path}/sketch/{build.project_name}.cpp.bak" {tools.rm_end.cmd}
+recipe.hooks.sketch.prebuild.2.pattern.windows=powershell.exe mv "{build.path}/sketch/{build.project_name}.cpp" "{build.path}/sketch/{build.project_name}.cpp.bak"
+recipe.hooks.sketch.prebuild.3.pattern.windows=powershell.exe -command "& {&cat {runtime.platform.path}/libraries/Kaleidoscope/src/kaleidoscope_internal/sketch_preprocessing/sketch_header.h, {build.path}/sketch/{build.project_name}.cpp.bak, {runtime.platform.path}/libraries/Kaleidoscope/src/kaleidoscope_internal/sketch_preprocessing/sketch_footer.h | sc {build.path}/sketch/{build.project_name}.cpp}"
