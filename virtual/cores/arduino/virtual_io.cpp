@@ -55,9 +55,6 @@ bool initVirtualInput(int argc, char* argv[]) {
   if (argc < 2 || strcmp(argv[1], "?") == 0) {
     printHelp();
     return false;
-  } else if (argc > 3) {
-    std::cerr << "Error: more arguments than expected (got " << (argc - 1) << ")" << std::endl;
-    return false;
   }
 
   if (strcmp(argv[1], "-i") == 0) {
