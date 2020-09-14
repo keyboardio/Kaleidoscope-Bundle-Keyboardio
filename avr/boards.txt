@@ -88,8 +88,8 @@ keyboardio_imago.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H=
 
 ####################
 planck.name=OLKB Planck
-planck.vid.0=0x1209
-planck.pid.0=0x2303
+planck.vid.0=0xFEED
+planck.pid.0=0x6060
 
 planck.menu.bootloader.dfu=DFU
 planck.menu.bootloader.dfu.upload.tool=dfu-programmer
@@ -118,12 +118,12 @@ planck.bootloader.extended_fuses=0xcb
 planck.bootloader.file=caterina/Caterina.hex
 planck.bootloader.unlock_bits=0x3F
 planck.bootloader.lock_bits=0x2F
-planck.bootloader.pid=0x2302
+planck.bootloader.pid=0x6060
 
 planck.build.mcu=atmega32u4
 planck.build.f_cpu=16000000L
-planck.build.vid=0x1209
-planck.build.pid=0x2303
+planck.build.vid=0xFEED
+planck.build.pid=0x6060
 planck.build.usb_product="Planck"
 planck.build.usb_manufacturer="OLKB"
 planck.build.board=AVR_PLANCK
