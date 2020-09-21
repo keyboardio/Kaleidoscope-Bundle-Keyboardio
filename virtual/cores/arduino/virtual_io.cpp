@@ -55,9 +55,6 @@ bool initVirtualInput(int argc, char* argv[]) {
   if (argc < 2 || strcmp(argv[1], "?") == 0) {
     printHelp();
     return false;
-  } else if (argc > 2) {
-    std::cerr << "Error: more arguments than expected (got " << (argc - 1) << ")" << std::endl;
-    return false;
   }
 
   if (strcmp(argv[1], "-i") == 0) {
@@ -74,12 +71,15 @@ bool initVirtualInput(int argc, char* argv[]) {
     }
   }
 
-  if (mkdir("results", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) && errno != EEXIST) {
-    std::cerr << "Error creating directory 'results', errno " << errno << std::endl;
-    return false;
+  if (argc > 2 && strcmp(argv[2], "-q") != 0) {
+    std::cerr << "Error: ignoring unknown argument '" << argv[2] << "'" << std::endl;
+    if (mkdir("results", S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) && errno != EEXIST) {
+      std::cerr << "Error creating directory 'results', errno " << errno << std::endl;
+      return false;
+    }
+    usbstream = new std::ofstream("results/USB.txt");
+    ledstream = new std::ofstream("results/LED.txt");
   }
-  usbstream = new std::ofstream("results/USB.txt");
-  ledstream = new std::ofstream("results/LED.txt");
 
   return true;
 }
@@ -99,10 +99,11 @@ std::string getLineOfInput(bool anythingHeld) {
 void printHelp(void) {
   std::cout << "\nUsage:\n" << std::endl;
   std::cout << "(Running with no arguments or with the argument '?' will print this help message and quit.)\n" << std::endl;
-  std::cout << "This program expects a single argument, which is either:" << std::endl;
+  std::cout << "This program expects either one or two arguments, which must be one of:" << std::endl;
   std::cout << "  1. An input file/script, with format given below, or" << std::endl;
   std::cout << "  2. \"-i\", to run interactively, where you can interactively enter commands and see results." << std::endl;
   std::cout << "  3. \"-t\", to run a test function that is specified in the sketch file." << std::endl;
+  std::cout << "  4. \"-t -q\", to run tests quietly (suppressing `results/` output streams)." << std::endl;
   std::cout << "\nIn either case, for each scan cycle you will specify zero or more input 'commands', that is," << std::endl;
   std::cout << "  actions to take on the keys of the virtual keyboard.  Each line of the input file, or each" << std::endl;
   std::cout << "  prompt (in interactive mode), represents one scan cycle; a blank line or empty prompt means" << std::endl;
