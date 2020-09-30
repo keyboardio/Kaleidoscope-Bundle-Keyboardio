@@ -1,3 +1,5 @@
+.vscode
 arduino-*-linux64.tar.xz
 arduino-*
 /virtual/boards.txt
+.DS_Store
