@@ -13,6 +13,7 @@ branches:
   - gh-pages
 env:
   global:
+  - LC_ALL: C
   - GH_REPO_NAME: Kaleidoscope-Bundle-Keyboardio
   - DOXYFILE: "$TRAVIS_BUILD_DIR/build-tools/automation/etc/doxygen/doxygen.conf"
   - GH_REPO_REF: github.com/keyboardio/Kaleidoscope-Bundle-Keyboardio.git
