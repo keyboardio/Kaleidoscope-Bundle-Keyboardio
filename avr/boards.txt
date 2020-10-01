@@ -197,7 +197,7 @@ keyboardio_atreus.upload.wait_for_upload_port=true
 
 
 
-atreus.name=Atreus
+atreus.name=Technomancy Atreus
 atreus.vid.0=0x1209
 atreus.pid.0=0xa1e5
 
