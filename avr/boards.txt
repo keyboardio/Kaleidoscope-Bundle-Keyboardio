@@ -218,10 +218,10 @@ atreus.menu.cpu.teensy.upload.tool=teensy_loader_cli
 atreus.menu.cpu.teensy.upload.protocol=halfkay
 atreus.menu.cpu.teensy.upload.maximum_size=32256
 
-atreus.menu.pinout.post2016=Post-2016 PCB
+atreus.menu.pinout.post2016=Post-2016 42 key PCB
 atreus.menu.pinout.post2016.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR=1
 
-atreus.menu.pinout.pre2016=Pre-2016 PCB
+atreus.menu.pinout.pre2016=Pre-2016 42 key PCB
 atreus.menu.pinout.pre2016.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Technomancy-Atreus.h"' -DKALEIDOSCOPE_HARDWARE_ATREUS_PINOUT_ASTAR_DOWN=1
 
 atreus.menu.pinout.legacy_teensy2=Legacy Teensy2
