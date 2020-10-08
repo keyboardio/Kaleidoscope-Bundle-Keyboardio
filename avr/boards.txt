@@ -42,6 +42,46 @@ model01.build.flashing_instructions="To update your keyboard's firmware, hold do
 model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Model01.h"'
 
 
+##############################################################
+
+keyboardio_atreus.name=Keyboardio Atreus
+keyboardio_atreus.vid.0=0x1209
+keyboardio_atreus.pid.0=0x2303
+
+keyboardio_atreus.upload.maximum_data_size=2560
+
+## defaults
+keyboardio_atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Atreus.h"' -DUSB_CONFIG_POWER=(25)
+keyboardio_atreus.build.mcu=atmega32u4
+keyboardio_atreus.build.f_cpu=16000000L
+keyboardio_atreus.build.vid=0x1209
+keyboardio_atreus.build.pid=0x2303
+keyboardio_atreus.build.usb_product="Atreus"
+keyboardio_atreus.build.usb_manufacturer="Keyboardio"
+keyboardio_atreus.build.board=AVR_KEYBOARDIO_ATREUS
+keyboardio_atreus.build.core=arduino:arduino
+keyboardio_atreus.build.variant=keyboardio-atreus
+keyboardio_atreus.build.flashing_instructions="To update your keyboard's firmware, hold down the key in the lower left corner of your Atreus."
+
+
+keyboardio_atreus.bootloader.tool=avrdude
+keyboardio_atreus.bootloader.low_fuses=0xff
+keyboardio_atreus.bootloader.high_fuses=0xd8
+keyboardio_atreus.bootloader.extended_fuses=0xcb
+keyboardio_atreus.bootloader.file=Atreus2/Caterina.hex
+keyboardio_atreus.bootloader.unlock_bits=0x3F
+keyboardio_atreus.bootloader.lock_bits=0x2F
+keyboardio_atreus.bootloader.pid=0x2302
+
+
+keyboardio_atreus.upload.tool=avrdude
+keyboardio_atreus.upload.protocol=avr109
+keyboardio_atreus.upload.maximum_size=28672
+keyboardio_atreus.upload.maximum_data_size=2560
+keyboardio_atreus.upload.speed=57600
+keyboardio_atreus.upload.disable_flushing=true
+keyboardio_atreus.upload.use_1200bps_touch=true
+keyboardio_atreus.upload.wait_for_upload_port=true
 
 
 keyboardio_imago.name=Keyboardio Imago
@@ -153,51 +193,11 @@ ergodox.build.core=arduino:arduino
 ergodox.build.variant=ergodox
 ergodox.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-EZ-ErgoDox.h"' '-DKALEIDOSCOPE_ENABLE_V1_PLUGIN_API=0'
 
-##############################################################
-
-keyboardio_atreus.name=Keyboardio Atreus
-keyboardio_atreus.vid.0=0x1209
-keyboardio_atreus.pid.0=0x2303
-
-keyboardio_atreus.upload.maximum_data_size=2560
-
-## defaults
-keyboardio_atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Atreus.h"' -DUSB_CONFIG_POWER=(25)
-keyboardio_atreus.build.mcu=atmega32u4
-keyboardio_atreus.build.f_cpu=16000000L
-keyboardio_atreus.build.vid=0x1209
-keyboardio_atreus.build.pid=0x2303
-keyboardio_atreus.build.usb_product="Atreus"
-keyboardio_atreus.build.usb_manufacturer="Keyboardio"
-keyboardio_atreus.build.board=AVR_KEYBOARDIO_ATREUS
-keyboardio_atreus.build.core=arduino:arduino
-keyboardio_atreus.build.variant=keyboardio-atreus
-keyboardio_atreus.build.flashing_instructions="To update your keyboard's firmware, hold down the key in the lower left corner of your Atreus."
-
-
-keyboardio_atreus.bootloader.tool=avrdude
-keyboardio_atreus.bootloader.low_fuses=0xff
-keyboardio_atreus.bootloader.high_fuses=0xd8
-keyboardio_atreus.bootloader.extended_fuses=0xcb
-keyboardio_atreus.bootloader.file=Atreus2/Caterina.hex
-keyboardio_atreus.bootloader.unlock_bits=0x3F
-keyboardio_atreus.bootloader.lock_bits=0x2F
-keyboardio_atreus.bootloader.pid=0x2302
-
-
-keyboardio_atreus.upload.tool=avrdude
-keyboardio_atreus.upload.protocol=avr109
-keyboardio_atreus.upload.maximum_size=28672
-keyboardio_atreus.upload.maximum_data_size=2560
-keyboardio_atreus.upload.speed=57600
-keyboardio_atreus.upload.disable_flushing=true
-keyboardio_atreus.upload.use_1200bps_touch=true
-keyboardio_atreus.upload.wait_for_upload_port=true
 
 
 
 
-atreus.name=Technomancy Atreus
+atreus.name=Technomancy Atreus (Before 2020)
 atreus.vid.0=0x1209
 atreus.pid.0=0xa1e5
 
