@@ -31,7 +31,7 @@ prepare-virtual:
 	sed -e "s/\(.*\)\.build\.core=arduino:arduino/\1.build.core=keyboardio:arduino/" avr/boards.txt >virtual/boards.txt
 
 update-submodules: checkout-submodules
-	@echo "All Kaleidoscope libraries have been updated from GitHub"
+	@echo "Kaleidoscope has been updated from GitHub"
 
 checkout-submodules: git-pull
 	git submodule update --init --recursive
@@ -47,7 +47,7 @@ git-pull:
 	git pull
 
 blindly-commit-updates: git-pull maintainer-update-submodules
-	git commit -a -m 'Blindly pull all plugins up to current'
+	git commit -a -m 'Blindly pull all submodules up to current'
 	git push
 
 
