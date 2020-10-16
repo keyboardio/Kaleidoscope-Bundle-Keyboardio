@@ -6,6 +6,7 @@ install:
 - mkdir -p ../hardware/
 - ln -s `pwd` ../hardware/keyboardio
 script:
+  - make
 branches:
   except:
   - gh-pages
