@@ -6,7 +6,7 @@
 __attribute__((weak))
 unsigned long millis(void) {
   static unsigned long time = 0;
-  return time++;
+  return ++time;
 }
 unsigned long micros(void) {
   return millis()*1000;
