@@ -9,6 +9,9 @@ menu.pinout=Pinout
 model01.name=Keyboardio Model 01
 model01.vid.0=0x1209
 model01.pid.0=0x2301
+model01.vid.1=0x1209
+model01.pid.1=0x2300
+
 
 model01.upload.tool=avrdude
 model01.upload.protocol=avr109
@@ -47,6 +50,8 @@ model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidos
 keyboardio_atreus.name=Keyboardio Atreus
 keyboardio_atreus.vid.0=0x1209
 keyboardio_atreus.pid.0=0x2303
+keyboardio_atreus.vid.1=0x1209
+keyboardio_atreus.pid.1=0x2302
 
 keyboardio_atreus.upload.maximum_data_size=2560
 
