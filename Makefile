@@ -29,7 +29,7 @@ endif
 
 prepare-virtual:
 	perl -p	-e 's/^(.*?).build.core=arduino:arduino/\1.hide=true\n\1.build.core=keyboardio:arduino/' < avr/boards.txt >virtual/boards.txt
-	[ -h virtual/platform.txt ] || ln -s virtual/platform-real.txt virtual/platform.txt
+	[ -h virtual/platform.txt ] || ln -s platform-real.txt virtual/platform.txt
 
 update-submodules: checkout-submodules
 	@echo "Kaleidoscope has been updated from GitHub"
