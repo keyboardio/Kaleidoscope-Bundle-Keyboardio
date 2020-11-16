@@ -37,6 +37,13 @@ compiler.elf2hex.cmd=avr-objcopy
 compiler.ldflags=
 compiler.size.cmd=avr-size
 
+compiler.objdump.cmd=avr-objdump
+compiler.objdump.flags=-C -d
+
+compiler.size-map.cmd=avr-nm
+compiler.size-map.flags=--size-sort -C -r -l -t decimal
+
+
 # This can be overridden in boards.txt
 build.extra_flags=
 
