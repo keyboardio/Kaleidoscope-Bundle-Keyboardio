@@ -31,6 +31,7 @@ compiler.cpp.flags=-c -g {compiler.warning_flags} -std=c++14 -ffunction-sections
 compiler.ar.cmd=ar
 compiler.ar.cmd.macosx=gcc-ar-10
 compiler.ar.flags=rcs
+compiler.ar.flags.macosx=rcs
 compiler.objcopy.cmd=objcopy
 compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
 compiler.elf2hex.flags=-O ihex -R .eeprom
