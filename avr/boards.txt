@@ -91,7 +91,9 @@ keyboardio_atreus.upload.wait_for_upload_port=true
 
 keyboardio_imago.name=Keyboardio Imago
 keyboardio_imago.vid.0=0x1209
-keyboardio_imago.pid.0=0x2301
+keyboardio_imago.pid.0=0x2305
+keyboardio_imago.vid.1=0x1209
+keyboardio_imago.pid.1=0x2304
 
 keyboardio_imago.upload.tool=avrdude
 keyboardio_imago.upload.protocol=avr109
@@ -109,14 +111,14 @@ keyboardio_imago.bootloader.extended_fuses=0xcb
 keyboardio_imago.bootloader.file=caterina/Caterina.hex
 keyboardio_imago.bootloader.unlock_bits=0x3F
 keyboardio_imago.bootloader.lock_bits=0x2F
-keyboardio_imago.bootloader.pid=0x0036
-keyboardio_imago.bootloader.vid=0x2341
+keyboardio_imago.bootloader.pid=0x2305
+keyboardio_imago.bootloader.vid=0x1209
 
 
 keyboardio_imago.build.mcu=atmega32u4
 keyboardio_imago.build.f_cpu=16000000L
 keyboardio_imago.build.vid=0x1209
-keyboardio_imago.build.pid=0x2301
+keyboardio_imago.build.pid=0x2303
 keyboardio_imago.build.usb_product="Imago"
 keyboardio_imago.build.usb_manufacturer="Keyboardio"
 keyboardio_imago.build.board=AVR_KEYBOARDIO_IMAGO
