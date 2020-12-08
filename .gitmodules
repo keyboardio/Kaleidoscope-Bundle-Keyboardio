@@ -1,6 +1,9 @@
 [submodule "avr/bootloaders/caterina"]
 	path = avr/bootloaders/caterina
 	url = https://github.com/keyboardio/Model01-Bootloader
+[submodule "toolchain"]
+	path = toolchain
+	url = https://github.com/keyboardio/Kaleidoscope-Prebuilt-Toolchain.git
 [submodule "build-tools"]
 	path = build-tools
 	url = https://github.com/keyboardio/Kaleidoscope-Build-Tools.git
