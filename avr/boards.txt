@@ -42,7 +42,7 @@ model01.build.core=arduino:arduino
 model01.build.variant=model01
 model01.build.flashing_instructions="To update your keyboard's firmware, hold down the 'Prog' key on your keyboard.\n\n(When the 'Prog' key glows red, you can release it.)"
 # TODO - the hardware spec / hardware duplication here makes Jesse unhappy. he would not like to see it live here long-term
-model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Model01.h"'
+model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Model01.h"' -DTWI_BUFFER_LENGTH=32
 
 
 ##############################################################
