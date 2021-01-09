@@ -38,6 +38,13 @@ class HardwareSerial : public Stream {
   static unsigned serialNumber;
   FILE* out;
 };
+
+class DebugStderrSerial : public HardwareSerial  {
+  public:
+  virtual size_t write(uint8_t);
+  using Print::write;  // write(str) and write(buf, size)
+};
+
 // The default Arduino core only provides each of these HardwareSerial objects if
 // various things are #defined.  We always provide them for virtual hardware.
 extern HardwareSerial Serial;
@@ -48,6 +55,10 @@ extern HardwareSerial Serial2;
 #define HAVE_HWSERIAL2
 extern HardwareSerial Serial3;
 #define HAVE_HWSERIAL3
+
+extern DebugStderrSerial DebugStderr;
+
+
 // end HardwareSerial
 
 extern void serialEventRun(void) __attribute__((weak));
