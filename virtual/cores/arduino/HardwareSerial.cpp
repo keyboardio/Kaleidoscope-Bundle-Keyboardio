@@ -1,6 +1,14 @@
 #include "HardwareSerial.h"
 #include "Arduino.h"
 
+#undef min
+#undef max
+
+#include "Stream.h"
+#include <stdio.h>
+#include <iostream>
+
+
 // see comments in the real HardwareSerial.cpp
 void serialEvent() __attribute__((weak));
 void serialEvent1() __attribute__((weak));
@@ -72,7 +80,17 @@ int HardwareSerial::available(void) {
   return 0;
 }
 
+
+size_t DebugStderrSerial::write(uint8_t c) {
+   std::cerr << c ; 
+  return 1;
+}
+
+
 HardwareSerial Serial;
 HardwareSerial Serial1;
 HardwareSerial Serial2;
 HardwareSerial Serial3;
+
+DebugStderrSerial DebugStderr;
+
