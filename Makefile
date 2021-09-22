@@ -22,7 +22,6 @@
 
 
 ifeq ($(BOARD_HARDWARE_PATH),)
-PLUGIN_TEST_SUPPORT_DIR ?= ./build-tools
 KALEIDOSCOPE_BUILDER_DIR ?= ./avr/libraries/Kaleidoscope/bin/
 
 endif
@@ -51,5 +50,3 @@ blindly-commit-updates: git-pull maintainer-update-submodules
 	git commit -a -m 'Blindly pull all submodules up to current'
 	git push
 
-
--include build-tools/makefiles/rules.mk
