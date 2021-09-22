@@ -1,9 +1,6 @@
 [submodule "avr/bootloaders/caterina"]
 	path = avr/bootloaders/caterina
 	url = https://github.com/keyboardio/Model01-Bootloader
-[submodule "avr/libraries/KeyboardioScanner"]
-	path = avr/libraries/KeyboardioScanner
-	url = https://github.com/keyboardio/KeyboardioScanner
 [submodule "avr/libraries/KeyboardioHID"]
 	path = avr/libraries/KeyboardioHID
 	url = https://github.com/keyboardio/KeyboardioHID
