@@ -13,3 +13,6 @@
 [submodule "avr/bootloaders/Atreus2"]
 	path = avr/bootloaders/Atreus2
 	url = https://github.com/keyboardio/Atreus2-Bootloader
+[submodule "gd32"]
+	path = gd32
+	url = https://github.com/keyboardio/ArduinoCore-GD32-Keyboardio
