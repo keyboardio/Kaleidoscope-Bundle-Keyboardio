@@ -17,11 +17,11 @@ unsigned long micros(void) {
 // but hopefully they stays fine if/when we get a better millis() and micros()
 
 void delay(unsigned long ms) {
-  unsigned long end = millis() + ms;
-  while(millis() < end);
+  while (ms-- > 0)
+    millis();
 }
 
 void delayMicroseconds(unsigned int us) {
-  unsigned long end = micros() + us;
-  while(micros() < end);
+  unsigned long ms = us / 1000;
+  delay(ms);
 }
