@@ -15,8 +15,7 @@ compiler.warning_flags.more=-Wall
 compiler.warning_flags.all=-Wall -Wextra
 
 compiler.wrapper.cmd=
-compiler.path=/usr/bin/
-compiler.path.macosx=/usr/local/bin/
+compiler.path=
 compiler.c.cmd=gcc
 compiler.c.cmd.macosx=gcc-11
 compiler.c.flags=-c -g {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1
