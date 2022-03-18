@@ -21,6 +21,7 @@ compiler.c.cmd.macosx=gcc-11
 compiler.c.flags=-c -g {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1
 compiler.c.elf.flags={compiler.warning_flags}
 compiler.c.elf.flags_join_archives=rcT
+compiler.c.elf.flags_join_archives.macosx=-static -o
 compiler.c.elf.cmd=g++
 compiler.c.elf.cmd.macosx=g++-11
 compiler.S.flags=-c -g -x assembler-with-cpp
@@ -29,9 +30,8 @@ compiler.cpp.cmd.macosx=g++-11
 
 compiler.cpp.flags=-c -g {compiler.warning_flags} -std=c++14 -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-ignored-qualifiers -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1 -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googletest/include -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googlemock/include -I{runtime.platform.path}/libraries/Kaleidoscope/fake-gtest/src
 compiler.ar.cmd=ar
-compiler.ar.cmd.macosx=gcc-ar-10
 compiler.ar.flags=rcs
-compiler.ar.flags.macosx=rcs
+compiler.libtool.cmd.macosx=libtool
 compiler.objcopy.cmd=objcopy
 compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
 compiler.elf2hex.flags=-O ihex -R .eeprom
@@ -83,7 +83,9 @@ recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compil
 ##              in the linker command line.
 ##
 ## CHANGED WRT DEFAULT: Generate a large .a archive to be linked higher up in the build system.
-recipe.c.combine.pattern="{compiler.path}/{compiler.ar.cmd}" {compiler.c.elf.flags_join_archives} "{build.path}/{build.project_name}.a" {object_files} "{build.path}/{archive_file}"
+recipe.c.combine.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.c.elf.flags_join_archives} "{build.path}/{build.project_name}.a" {object_files} "{build.path}/{archive_file}"
+# On macos we use libtool rather than ar. It's in /usr/bin rather than the other path where gcc lives
+recipe.c.combine.pattern.macosx="{compiler.libtool.cmd}" {compiler.c.elf.flags_join_archives} "{build.path}/{build.project_name}.a" {object_files} "{build.path}/{archive_file}"
 ################################################################################
 
 ## Compute size
