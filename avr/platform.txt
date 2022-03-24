@@ -38,6 +38,7 @@ compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,
 compiler.elf2hex.flags=-O ihex -R .eeprom
 compiler.elf2hex.cmd=avr-objcopy
 compiler.ldflags=
+compiler.libraries.ldflags=
 compiler.size.cmd=avr-size
 
 compiler.objdump.cmd=avr-objdump
@@ -96,7 +97,7 @@ recipe.c.combine.pattern="{compiler.path}/{compiler.ar.cmd}" {compiler.c.elf.fla
 ##
 ## NEWLY INTRODUCED: Link with global garbage collection (considering all
 ##                   objects and libraries together).
-recipe.hooks.linking.postlink.1.pattern={compiler.wrapper.cmd} "{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -mmcu={build.mcu} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}_joined.a" "-L{build.path}" -lm
+recipe.hooks.linking.postlink.1.pattern={compiler.wrapper.cmd} "{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} -mmcu={build.mcu} {compiler.c.elf.extra_flags} -o "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}_joined.a" "-L{build.path}" -lm {compiler.libraries.ldflags}
 ##
 ## NEWLY INTRODUCED: Removing the joined library is required to avoid malformed archives that
 ##                   would otherwise result when updating a pre-existing
