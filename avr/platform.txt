@@ -199,16 +199,3 @@ tools.ctags.path={runtime.tools.ctags.path}
 tools.ctags.cmd.path={path}/ctags
 tools.ctags.pattern="{cmd.path}" -u --language-force=c++ -f - --c++-kinds=svpf --fields=KSTtzns --line-directives "{source_file}"
 
-# The following recipes enable adding code to specific places
-# of the preprocessed firmware sketch. This is done by pasting 
-# the content of two files
-#   kaleidoscope_internal/sketch_preprocessing/sketch_header.h,
-#   kaleidoscope_internal/sketch_preprocessing/sketch_footer.h
-# to the top and the bottom of the preprocessed sketch file.
-
-recipe.hooks.sketch.prebuild.1.pattern=mv "{build.path}/sketch/{build.project_name}.cpp" "{build.path}/sketch/{build.project_name}.cpp.bak"
-recipe.hooks.sketch.prebuild.2.pattern=sh -c "cat {runtime.platform.path}/libraries/Kaleidoscope/src/kaleidoscope_internal/sketch_preprocessing/sketch_header.h {build.path}/sketch/{build.project_name}.cpp.bak {runtime.platform.path}/libraries/Kaleidoscope/src/kaleidoscope_internal/sketch_preprocessing/sketch_footer.h > {build.path}/sketch/{build.project_name}.cpp"
-
-recipe.hooks.sketch.prebuild.1.pattern.windows={tools.rm_start.cmd} "{build.path}/sketch/{build.project_name}.cpp.bak" {tools.rm_end.cmd}
-recipe.hooks.sketch.prebuild.2.pattern.windows=powershell.exe mv "{build.path}/sketch/{build.project_name}.cpp" "{build.path}/sketch/{build.project_name}.cpp.bak"
-recipe.hooks.sketch.prebuild.3.pattern.windows=powershell.exe -command "& {&cat {runtime.platform.path}/libraries/Kaleidoscope/src/kaleidoscope_internal/sketch_preprocessing/sketch_header.h, {build.path}/sketch/{build.project_name}.cpp.bak, {runtime.platform.path}/libraries/Kaleidoscope/src/kaleidoscope_internal/sketch_preprocessing/sketch_footer.h | sc {build.path}/sketch/{build.project_name}.cpp}"
