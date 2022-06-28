@@ -44,7 +44,6 @@ model01.build.flashing_instructions="To update your keyboard's firmware, hold do
 # TODO - the hardware spec / hardware duplication here makes Jesse unhappy. he would not like to see it live here long-term
 model01.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Model01.h"' -DTWI_BUFFER_LENGTH=32
 
-
 ##############################################################
 
 keyboardio_atreus.name=Keyboardio Atreus
@@ -127,11 +126,24 @@ keyboardio_imago.build.variant=keyboardio-imago
 keyboardio_imago.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Imago.h"'
 
 
+##############################################################
 
+ploopy_mini.name=Ploopy Trackball Mini
+ploopy_mini.vid.0 = 0x5043
+ploopy_mini.pid.0 = 0x1eab
 
+ploopy_mini.upload.maximum_data_size=2560
 
-
-
+ploopy_mini.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Ploopy-Trackball-Mini.h"'
+ploopy_mini.build.mcu=atmega32u4
+ploopy_mini.build.f_cpu=16000000L
+ploopy_mini.build.vid=0x5043
+ploopy_mini.build.pid=0x1eab
+ploopy_mini.build.usb_product="Trackball Mini"
+ploopy_mini.build.usb_manufacturer="Ploopy"
+ploopy_mini.build.board=AVR_PLOOPY_MINI
+ploopy_mini.build.core=arduino:arduino
+ploopy_mini.build.variant=ploopy-mini
 
 ####################
 planck.name=OLKB Planck
