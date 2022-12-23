@@ -17,16 +17,16 @@ compiler.warning_flags.all=-Wall -Wextra
 compiler.wrapper.cmd=
 compiler.path=
 compiler.c.cmd=gcc
-compiler.c.cmd.macosx=gcc-11
+compiler.c.cmd.macosx=gcc-12
 compiler.c.flags=-c -g {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1
 compiler.c.elf.flags={compiler.warning_flags}
 compiler.c.elf.flags_join_archives=rcT
 compiler.c.elf.flags_join_archives.macosx=-static -o
 compiler.c.elf.cmd=g++
-compiler.c.elf.cmd.macosx=g++-11
+compiler.c.elf.cmd.macosx=g++-12
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=g++
-compiler.cpp.cmd.macosx=g++-11
+compiler.cpp.cmd.macosx=g++-12
 
 compiler.cpp.flags=-c -g {compiler.warning_flags} -std=c++14 -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-ignored-qualifiers -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1 -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googletest/include -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googlemock/include -I{runtime.platform.path}/libraries/Kaleidoscope/fake-gtest/src
 compiler.ar.cmd=ar
