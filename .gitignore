@@ -1,3 +1,4 @@
 .vscode
 /virtual/boards.txt
 .DS_Store
+/gd32/
