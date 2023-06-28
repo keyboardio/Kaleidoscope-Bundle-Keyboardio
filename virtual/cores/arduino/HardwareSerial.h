@@ -56,7 +56,7 @@ extern HardwareSerial Serial2;
 extern HardwareSerial Serial3;
 #define HAVE_HWSERIAL3
 
-extern DebugStderrSerial DebugStderr;
+extern DebugStderrSerial DebugStderr();
 
 
 // end HardwareSerial

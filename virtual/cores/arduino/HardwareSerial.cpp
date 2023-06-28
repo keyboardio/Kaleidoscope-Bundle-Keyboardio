@@ -92,5 +92,8 @@ HardwareSerial Serial1;
 HardwareSerial Serial2;
 HardwareSerial Serial3;
 
-DebugStderrSerial DebugStderr;
+DebugStderrSerial& DebugStderr() {
+  static DebugStderrSerial* ans = new DebugStderrSerial();
+  return *ans;
+}
 
