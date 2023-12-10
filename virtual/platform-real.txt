@@ -27,6 +27,8 @@ compiler.c.elf.cmd.macosx=g++-12
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=g++
 compiler.cpp.cmd.macosx=g++-12
+compiler.cpp.elf.flags=
+compiler.cpp.elf.flags.macosx=-Wl,-ld_classic
 
 compiler.cpp.flags=-c -g {compiler.warning_flags} -std=c++14 -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -Woverloaded-virtual -Wno-unused-parameter -Wno-unused-variable -Wno-ignored-qualifiers -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1 -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googletest/include -I{runtime.platform.path}/libraries/Kaleidoscope/testing/googletest/googlemock/include -I{runtime.platform.path}/libraries/Kaleidoscope/fake-gtest/src
 compiler.ar.cmd=ar
