@@ -245,6 +245,10 @@ int USB_Recv(u8 ep, void* d, int len)
 	
 	LockEP lock(ep);
 	u8 n = FifoByteCount();
+	if (!n && HasOUT()) {
+		ReleaseRX(); // handle ZLP
+		n = FifoByteCount();
+	}
 	len = min(n,len);
 	n = len;
 	u8* dst = (u8*)d;
