@@ -591,6 +591,7 @@ ISR(USB_COM_vect)
 		ClearIN();
 
     bool ok = true;
+	bool sendZLP = false;
 	if (REQUEST_STANDARD == (requestType & REQUEST_TYPE))
 	{
 		//	Standard Requests
@@ -635,6 +636,9 @@ ISR(USB_COM_vect)
 		else if (GET_DESCRIPTOR == r)
 		{
 			ok = SendDescriptor(setup);
+			/* Send ZLP as needed if we sent less than requested */
+			if (_cmark < _cend && (_cmark & 0x3f) == 0)
+				sendZLP = true;
 		}
 		else if (SET_DESCRIPTOR == r)
 		{
@@ -664,10 +668,23 @@ ISR(USB_COM_vect)
 	{
 		InitControl(setup.wLength);		//	Max length of transfer
 		ok = ClassInterfaceRequest(setup);
+		/* Send ZLP as needed if we sent less than requested */
+		if (_cmark < _cend && (_cmark & 0x3f) == 0)
+			sendZLP = true;
 	}
 
 	if (ok)
-		ClearIN();
+	{
+		if (sendZLP) {
+			/* Send ZLP if needed */
+			if (WaitForINOrOUT())
+			{
+				/* but only if we didn't get an unexpected OUT */
+				ClearIN();
+			}
+		} else
+			ClearIN();
+	}
 	else
 	{
 		Stall();
