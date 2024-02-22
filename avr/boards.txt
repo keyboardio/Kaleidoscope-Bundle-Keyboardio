@@ -56,7 +56,7 @@ keyboardio_atreus.pid.1=0x2302
 keyboardio_atreus.upload.maximum_data_size=2560
 
 ## defaults
-keyboardio_atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Atreus.h"' -DUSB_CONFIG_POWER=(25)
+keyboardio_atreus.build.extra_flags={build.usb_flags} '-DKALEIDOSCOPE_HARDWARE_H="Kaleidoscope-Hardware-Keyboardio-Atreus.h"' '-DUSB_CONFIG_POWER=(25)'
 keyboardio_atreus.build.mcu=atmega32u4
 keyboardio_atreus.build.f_cpu=16000000L
 keyboardio_atreus.build.vid=0x1209
