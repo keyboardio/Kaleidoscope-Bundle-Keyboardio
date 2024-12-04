@@ -17,16 +17,16 @@ compiler.warning_flags.all=-Wall -Wextra
 compiler.wrapper.cmd=
 compiler.path=
 compiler.c.cmd=gcc
-compiler.c.cmd.macosx=gcc-12
+compiler.c.cmd.macosx=gcc-14
 compiler.c.flags=-c -g {compiler.warning_flags} -std=gnu11 -ffunction-sections -fdata-sections -MMD -DKALEIDOSCOPE_VIRTUAL_BUILD=1 -DKEYBOARDIOHID_BUILD_WITHOUT_HID=1 -DUSBCON=dummy -DARDUINO_ARCH_AVR=1
 compiler.c.elf.flags={compiler.warning_flags}
 compiler.c.elf.flags_join_archives=rcT
 compiler.c.elf.flags_join_archives.macosx=-static -o
 compiler.c.elf.cmd=g++
-compiler.c.elf.cmd.macosx=g++-12
+compiler.c.elf.cmd.macosx=g++-14
 compiler.S.flags=-c -g -x assembler-with-cpp
 compiler.cpp.cmd=g++
-compiler.cpp.cmd.macosx=g++-12
+compiler.cpp.cmd.macosx=g++-14
 compiler.cpp.elf.flags=
 compiler.cpp.elf.flags.macosx=-Wl,-ld_classic
 
