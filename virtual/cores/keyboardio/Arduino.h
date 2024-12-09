@@ -90,8 +90,10 @@ void yield(void);
 #undef abs
 #endif
 
-#define min(a,b) ((a)<(b)?(a):(b))
-#define max(a,b) ((a)>(b)?(a):(b))
+// Don't define the arduino min and max. They get in the way of the C++ standard versions
+// #define min(a,b) ((a)<(b)?(a):(b))
+// #define max(a,b) ((a)>(b)?(a):(b))
+
 #define abs(x) ((x)>0?(x):-(x))
 #define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
 #define round(x)     ((x)>=0?(long)((x)+0.5):(long)((x)-0.5))
