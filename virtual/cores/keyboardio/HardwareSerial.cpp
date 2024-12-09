@@ -48,44 +48,53 @@ unsigned HardwareSerial::serialNumber = 0;
 HardwareSerial::HardwareSerial() {}
 
 void HardwareSerial::begin(unsigned long baud, byte config) {
-  char filename[64];
-  snprintf(filename, 64, "results/serial_%u.txt", serialNumber++);
-  out = fopen(filename, "w");
+  // Nothing needed for virtual serial
 }
 
 void HardwareSerial::end() {
-  if (out) fclose(out);
+  clearBuffers();
 }
 
 int HardwareSerial::availableForWrite(void) {
-  return out ? 1000 : 0;
-}
-size_t HardwareSerial::write(uint8_t c) {
-  if (out) fputc(c, out);
-  return 1;
-}
-void HardwareSerial::flush(void) {
-  if (out) fflush(out);
+  return BUFFER_SIZE - output_buffer_.size();
 }
 
-// TODO make input serial connections better.
-// For now they're just essentially not allowed
-int HardwareSerial::peek(void) {
-  return -1;
-}
-int HardwareSerial::read(void) {
-  return -1;
-}
-int HardwareSerial::available(void) {
+size_t HardwareSerial::write(uint8_t c) {
+  if (output_buffer_.size() < BUFFER_SIZE) {
+    output_buffer_.push(c);
+    return 1;
+  }
   return 0;
 }
 
-
-size_t DebugStderrSerial::write(uint8_t c) {
-   std::cerr << c ; 
-  return 1;
+void HardwareSerial::flush(void) {
+  // Nothing needed for virtual serial
 }
 
+int HardwareSerial::peek(void) {
+  if (input_buffer_.empty()) {
+    return -1;
+  }
+  return input_buffer_.front();
+}
+
+int HardwareSerial::read(void) {
+  if (input_buffer_.empty()) {
+    return -1;
+  }
+  uint8_t c = input_buffer_.front();
+  input_buffer_.pop();
+  return c;
+}
+
+int HardwareSerial::available(void) {
+  return input_buffer_.size();
+}
+
+size_t DebugStderrSerial::write(uint8_t c) {
+  std::cerr << c;
+  return 1;
+}
 
 HardwareSerial Serial;
 HardwareSerial Serial1;

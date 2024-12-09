@@ -1,48 +1,83 @@
 #pragma once
 
 #include "Stream.h"
+
+#include <vector>
+#include <queue>
+#include <stdint.h>  // Use C-style header instead of <cstdint>
 #include <stdio.h>
 
 class HardwareSerial : public Stream {
  public:
-  HardwareSerial();
-  void begin(unsigned long baud) {
-    begin(baud, 0x06);
-  }
-  void begin(unsigned long, uint8_t);
-  void end();
-  virtual int available();
-  virtual int peek();
-  virtual int read();
-  virtual int availableForWrite();
-  virtual void flush();
-  virtual size_t write(uint8_t);
-  // we keep these four write()s the same as the default Arduino core
-  inline size_t write(unsigned long n) {
-    return write((uint8_t)n);
-  }
-  inline size_t write(long n) {
-    return write((uint8_t)n);
-  }
-  inline size_t write(unsigned int n) {
-    return write((uint8_t)n);
-  }
-  inline size_t write(int n) {
-    return write((uint8_t)n);
-  }
-  using Print::write;  // write(str) and write(buf, size)
-  operator bool() {
-    return true;
-  }
- private:
+  static constexpr size_t BUFFER_SIZE = 1024;
   static unsigned serialNumber;
-  FILE* out;
+
+  HardwareSerial();
+  virtual ~HardwareSerial() = default;
+
+  void begin(unsigned long baud) { begin(baud, 0x06); }
+  void begin(unsigned long baud, uint8_t config);
+  void end();
+
+  // Arduino uses this to check if serial is ready
+  operator bool() const { return true; }
+
+  virtual int available(void) override;
+  virtual int availableForWrite(void);
+  virtual int peek(void) override;
+  virtual int read(void) override;
+
+  size_t readBytes(char *buffer, size_t length) {
+    size_t count = 0;
+    while (count < length && available()) {
+      buffer[count++] = read();
+    }
+    return count;
+  }
+
+  virtual size_t write(uint8_t byte) override;
+  virtual size_t write(const uint8_t *buffer, size_t size) override {
+    for (size_t i = 0; i < size; i++) {
+      write(buffer[i]);
+    }
+    return size;
+  }
+
+  virtual void flush(void) override;
+
+  // Test helper methods
+  void injectInput(const uint8_t *data, size_t length) {
+    for (size_t i = 0; i < length; i++) {
+      input_buffer_.push(data[i]);
+    }
+  }
+
+  std::vector<uint8_t> getOutputBuffer() {
+    std::vector<uint8_t> result;
+    while (!output_buffer_.empty()) {
+      result.push_back(output_buffer_.front());
+      output_buffer_.pop();
+    }
+    return result;
+  }
+
+  void clearBuffers() {
+    std::queue<uint8_t> empty;
+    input_buffer_.swap(empty);
+    output_buffer_.swap(empty);
+  }
+
+ private:
+  std::queue<uint8_t> input_buffer_;
+  std::queue<uint8_t> output_buffer_;
+  FILE* out{nullptr};  // For file-based output
 };
 
 class DebugStderrSerial : public HardwareSerial  {
   public:
   virtual size_t write(uint8_t);
   using Print::write;  // write(str) and write(buf, size)
+  operator bool() const { return true; }  // Always ready for debug output
 };
 
 // The default Arduino core only provides each of these HardwareSerial objects if
